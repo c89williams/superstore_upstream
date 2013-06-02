@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 	jQuery( '.entry table tr:odd' ).addClass( 'alt-table-row' );
 
 	// FitVids - Responsive Videos
-	jQuery( '.post, .widget, .panel, .page, #featured-slider .slide-media' ).fitVids();
+	jQuery( '.post, .widget, .panel, .page, #featured-slider .slide-media, .slide-content' ).fitVids();
 
 	// Add class to parent menu items with JS until WP does this natively
 	jQuery("ul.sub-menu, ul.children").parents('li').addClass('parent');

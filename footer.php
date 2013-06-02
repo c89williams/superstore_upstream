@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @subpackage Template
  */
 ?>
+	<?php woo_display_breadcrumbs(); ?>
+
 	<div class="footer-wrap contact">
 
 		<section class="col-full">

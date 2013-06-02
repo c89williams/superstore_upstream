@@ -99,7 +99,6 @@ if ( function_exists( 'wp_nav_menu') ) {
 /*-----------------------------------------------------------------------------------*/
 
 add_action('woo_main_before','woo_display_breadcrumbs',10);
-add_action('woo_footer_before','woo_display_breadcrumbs',10);
 if (!function_exists( 'woo_display_breadcrumbs')) {
 	function woo_display_breadcrumbs() {
 		global $woo_options;

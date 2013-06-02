@@ -173,6 +173,24 @@ if (!function_exists('woocommerce_output_related_products')) {
 	}
 }
 
+/* UN-COMMENT ME AND REMOVE ABOVE FUNCTION WHEN 2.1 DROPS
+
+add_filter( 'woocommerce_output_related_products_args', 'superstore_related_products' );
+function superstore_related_products() {
+	global $woo_options;
+	$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
+	if ( isset( $woo_options['woo_layout'] ) && ( $woo_options['woo_layout'] == 'layout-full' ) || $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' ) {
+		$products_cols = 4;
+	} else {
+		$products_cols = 3;
+	}
+	$args = array(
+		'posts_per_page' => $products_max,
+		'columns'        => $products_cols,
+	);
+	return $args;
+}*/
+
 // Upsells
 if ( ! function_exists( 'woo_upsell_display' ) ) {
 	function woo_upsell_display() {

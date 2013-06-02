@@ -1533,8 +1533,10 @@ table.cart {
 				fieldset {
 					border: 0;
 					margin: 0;
-					padding: 1em 0 0 0;
 					font-size: .857em;
+					p:first-child {
+						margin-bottom:1em;
+					}
 					label {
 						width:auto;
 						margin-left:0;
@@ -1545,9 +1547,6 @@ table.cart {
 					.form-row-first {
 						select {
 							width:48%;
-							&:nth-child(2n) {
-								float: right;
-							}
 						}
 					}
 
@@ -1648,8 +1647,8 @@ table.cart {
 	padding:0;
 }
 
-.nav-hidden {
-	.footer-wrap {
+.nav-hidden.woocommerce-checkout {
+	.footer-wrap, .nav-toggle, .top-nav, .widget_product_search, #content + .breadcrumbs-wrap {
 		display: none;
 	}
 }
@@ -1791,9 +1790,19 @@ table.cart {
 			}
 		}
 	}
-
-	ul.products {
-		.row(9);
+	.layout-left-content, .layout-right-content {
+		.woocommerce-columns-4, .woocommerce-columns-3, .woocommerce-columns-5 {
+			ul.products {
+				.row(9);
+			}
+		}
+	}
+	.layout-full {
+		.woocommerce-columns-4 {
+			ul.products {
+				.row(12);
+			}
+		}
 	}
 	// product columns (when not using full width layout)
 	.woocommerce-columns-2 {

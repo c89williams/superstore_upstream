@@ -4,7 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /* Recent Products widget */
 /*---------------------------------------------------------------------------------*/
 class Woo_Recent_Products extends WP_Widget {
-	var $settings = array( 'products_per_page' );
+	var $settings = array( 'title', 'products_per_page' );
+
 
 	function Woo_Recent_Products() {
 		$widget_ops = array( 'description' => 'Display recent products (use in the homepage widget region)' );
@@ -16,9 +17,14 @@ class Woo_Recent_Products extends WP_Widget {
 		extract( $args, EXTR_SKIP );
 		extract( $instance, EXTR_SKIP );
 
+
+	    	/* Our variables from the widget settings. */
+			$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
+
 			echo $before_widget;
 
-	    		echo '<h1>' . __('New Products', 'woothemes') . '</h1>';
+			/* Display the widget title if one was input (before and after defined by themes). */
+			if ( $title ) { echo $before_title . $title . $after_title; }
 
 	    		echo do_shortcode( '[recent_products per_page="' . apply_filters( 'products_per_page', $products_per_page, $instance, $this->id_base ) . '" columns="4" orderby="date" order="desc"]' );
 
@@ -55,6 +61,11 @@ class Woo_Recent_Products extends WP_Widget {
 		$instance = $this->woo_enforce_defaults( $instance );
 		extract( $instance, EXTR_SKIP );
 ?>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title (optional):','woothemes'); ?></label>
+			<input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr( $title ); ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
+		</p>
+
 		<p>
 			<label for="<?php echo $this->get_field_id('products_per_page'); ?>"><?php _e('Number of recent products to display:','woothemes'); ?></label>
 			<input type="number" name="<?php echo $this->get_field_name('products_per_page'); ?>" value="<?php echo esc_attr( $products_per_page ); ?>" size="3" style="width:40px;" id="<?php echo $this->get_field_id('products_per_page'); ?>" />

@@ -1,5 +1,22 @@
 *** Superstore Changelog ***
 
+2013.05.21 - version 1.0.8
+ * includes/js/jquery.prettyphoto.js - Update to latest. Resolves keyboard shortcuts refreshing the add review lightbox.
+ * includes/theme-functions.php
+   footer.php - Fixed footer breadcrumb positioning.
+ * styles/*.css - Category label colors fixed in handheld orientation.
+ * css/woocommerce.css - Improvements to CC data collection on checkout for relevant gateways. Footer breadcrumbs now hidden on distraction free checkout. Fixed some product layout issues when using certain columns.
+ * includes/sidebar-init.php
+   includes/widgets/widget-woo-recent-products.php
+   index.php - Gave the recent products widget a title input.
+ * css/layout.css - Fixed slide content background in <IE8.
+ * includes/js/general.js - Fitvids now applied to videos in slide content.
+ * style.css - Woo shortcode buttons styles.
+
+2013.05.14 - version 1.0.7
+ * includes/woocommerce.css - Fixed month/year select order for direct payment gateways. Improved distraction-free checkout on mobile devices (hidden navigation items).
+ * includes/js/infinite-scroll.js - Updated to latest stable version. Resolves permalink issue.
+
 2013.04.25 - version 1.0.6
  * css/woocommerce.css - Footer contact details now hidden on mobile view when using distraction free checkout. Fixed radios on checkout for gateways that save card details. Fixed layout bug when displaying more than 4 featured products on the homepage.
  * includes/js/general.js

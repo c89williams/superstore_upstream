@@ -48,19 +48,19 @@ if ( ! function_exists( 'wp' ) && ! empty( $_SERVER['SCRIPT_FILENAME'] ) && base
 	    	<?php
 	    		if ( ! dynamic_sidebar( 'homepage' ) ) {
 	    			if ( 'true' == $settings['homepage_enable_product_categories'] && is_woocommerce_activated() ) {
-	    				the_widget( 'Woo_Product_Categories', array( 'title' => $settings['homepage_product_categories_title'], 'categories_per_page' => intval( $settings['homepage_product_categories_limit'] ) ) );
+	    				the_widget( 'Woo_Product_Categories', array( 'title' => stripslashes( $settings['homepage_product_categories_title'] ), 'categories_per_page' => intval( $settings['homepage_product_categories_limit'] ) ) );
 	    			}
 
 	    			if ( 'true' == $settings['homepage_enable_featured_products'] && is_woocommerce_activated() ) {
-	    				the_widget( 'Woo_Featured_Products', array( 'title' => $settings['homepage_featured_products_title'], 'products_per_page' => intval( $settings['homepage_featured_products_limit'] ) ) );
+	    				the_widget( 'Woo_Featured_Products', array( 'title' => stripslashes( $settings['homepage_featured_products_title'] ), 'products_per_page' => intval( $settings['homepage_featured_products_limit'] ) ) );
 	    			}
 
 	    			if ( 'true' == $settings['homepage_enable_recent_products'] && is_woocommerce_activated() ) {
-	    				the_widget( 'Woo_Recent_Products', array( 'title' => $settings['homepage_recent_products_title'], 'products_per_page' => intval( $settings['homepage_recent_products_limit'] ) ) );
+	    				the_widget( 'Woo_Recent_Products', array( 'title' => stripslashes( $settings['homepage_recent_products_title'] ), 'products_per_page' => intval( $settings['homepage_recent_products_limit'] ) ) );
 	    			}
 
 	    			if ( 'true' == $settings['homepage_enable_testimonials'] ) {
-	    				do_action( 'woothemes_testimonials', array( 'title' => $settings['homepage_testimonials_area_title'], 'limit' => $settings['homepage_number_of_testimonials'], 'per_row' => 4 ) );
+	    				do_action( 'woothemes_testimonials', array( 'title' => stripslashes( $settings['homepage_testimonials_area_title'] ), 'limit' => $settings['homepage_number_of_testimonials'], 'per_row' => 4 ) );
 	    			}
 	    		}
 	    	?>

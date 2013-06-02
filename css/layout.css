@@ -1968,6 +1968,16 @@ body:after {
     position: relative;
     z-index: 9999999;
   }
+  .ie7.home .flexslider li.slide .slide-content header,
+  .ie8.home .flexslider li.slide .slide-content header,
+  .ie7 .business .flexslider li.slide .slide-content header,
+  .ie8 .business .flexslider li.slide .slide-content header,
+  .ie7.home .flexslider li.slide .slide-content .entry,
+  .ie8.home .flexslider li.slide .slide-content .entry,
+  .ie7 .business .flexslider li.slide .slide-content .entry,
+  .ie8 .business .flexslider li.slide .slide-content .entry {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2NkYGA4AwAA1gDOIG8pFwAAAABJRU5ErkJggg==);
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   #navigation.fixed {
