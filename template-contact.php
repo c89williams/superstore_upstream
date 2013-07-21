@@ -141,7 +141,7 @@ jQuery(document).ready(function() {
 
                 			<div class="location-twitter fix">
     							<?php if ( isset( $woo_options['woo_contact_panel'] ) && $woo_options['woo_contact_panel'] == 'true' ) { ?>
-						    	<section id="office-location"<?php if ( ( isset( $woo_options['woo_contact_twitter'] ) && $woo_options['woo_contact_twitter'] != '' ) || ( isset($woo_options['woo_contact_subscribe_and_connect']) && $woo_options['woo_contact_subscribe_and_connect'] == 'true' ) ) { ?> class="col-left"<?php } ?>>
+						    	 <section id="office-location"<?php if ( ( isset($woo_options['woo_contact_subscribe_and_connect']) && $woo_options['woo_contact_subscribe_and_connect'] == 'true' ) ) { ?> class="col-left"<?php } ?>>
 									<?php if (isset($woo_options['woo_contact_title'])) { ?><h3><?php echo esc_html( $woo_options['woo_contact_title'] ); ?></h3><?php } ?>
 									<ul>
 										<?php if (isset($woo_options['woo_contact_title']) && $woo_options['woo_contact_title'] != '' ) { ?><li><?php echo nl2br( esc_html( $woo_options['woo_contact_address'] ) ); ?></li><?php } ?>
@@ -151,18 +151,8 @@ jQuery(document).ready(function() {
 									</ul>
 						    	</section>
 						    	<?php } ?>
-						    	<div class="contact-social<?php if ( ( isset( $woo_options['woo_contact_panel'] ) && $woo_options['woo_contact_panel'] == 'true' ) && ( ( isset( $woo_options['woo_contact_twitter'] ) && $woo_options['woo_contact_twitter'] != '' ) || ( isset($woo_options['woo_contact_subscribe_and_connect']) && $woo_options['woo_contact_subscribe_and_connect'] == 'true' ) ) ) { ?> col-right<?php } ?>">
 
-						    		<?php if ( isset( $woo_options['woo_contact_twitter'] ) && $woo_options['woo_contact_twitter'] != '' ) { ?>
-						    		<section id="twitter">
-						    			<h3>Twitter</h3>
-						    			<ul id="twitter_update_list_123"><li></li></ul>
-						    			<?php echo woo_twitter_script(123, $woo_options['woo_contact_twitter'],1); ?>
-						    		</section>
-						    		<?php } ?>
-						    		<?php if ( isset($woo_options['woo_contact_subscribe_and_connect']) && $woo_options['woo_contact_subscribe_and_connect'] == 'true' ) { woo_subscribe_connect(); } ?>
-
-						    	</div>
+						    	<div class="contact-social<?php if ( ( isset( $woo_options['woo_contact_panel'] ) && $woo_options['woo_contact_panel'] == 'true' ) || ( isset($woo_options['woo_contact_subscribe_and_connect']) && $woo_options['woo_contact_subscribe_and_connect'] == 'true' ) )  { ?> col-right<?php } ?>">
 
 						    	</div><!-- /.location-twitter -->
 

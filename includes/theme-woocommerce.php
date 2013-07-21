@@ -13,7 +13,19 @@ function woocommerce_support() {
 }
 
 // Disable WooCommerce styles
-define( 'WOOCOMMERCE_USE_CSS', false );
+if ( version_compare( WOOCOMMERCE_VERSION, "2.1" ) >= 0 ) {
+	// WooCommerce 2.1 or above is active
+	add_action( 'wp_enqueue_scripts', 'woo_wc_dequeue_styles' );
+} else {
+	// WooCommerce is less than 2.1
+	define( 'WOOCOMMERCE_USE_CSS', false );
+}
+
+function woo_wc_dequeue_styles() {
+	wp_dequeue_style( 'woocommerce_frontend_styles_layout' );
+	wp_dequeue_style( 'woocommerce_frontend_styles_smallscreen' );
+	wp_dequeue_style( 'woocommerce_frontend_styles' );
+}
 
 // Remove default review stuff - the theme overrides it
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
@@ -159,27 +171,27 @@ if ( ! function_exists( 'wooframework_related_products' ) ) {
 	} // End wooframework_related_products()
 }
 
-if (!function_exists('woocommerce_output_related_products')) {
+if ( ! function_exists('woocommerce_output_related_products') && version_compare( WOOCOMMERCE_VERSION, "2.1" ) < 0 ) {
 	function woocommerce_output_related_products() {
-		// Display related products in correct layout.
-		global $woo_options;
-		$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
-		if ( isset( $woo_options['woo_layout'] ) && ( $woo_options['woo_layout'] == 'layout-full' ) || $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' ) {
-			$products_cols = 4;
-		} else {
-			$products_cols = 3;
-		}
-	    woocommerce_related_products( $products_max, $products_cols );
+			// Display related products in correct layout.
+			global $woo_options, $post;
+			$single_layout = get_post_meta( $post->ID, '_layout', true );
+			$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
+			if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
+				$products_cols = 4;
+			} else {
+				$products_cols = 3;
+			}
+		    woocommerce_related_products( $products_max, $products_cols );
 	}
 }
 
-/* UN-COMMENT ME AND REMOVE ABOVE FUNCTION WHEN 2.1 DROPS
-
 add_filter( 'woocommerce_output_related_products_args', 'superstore_related_products' );
 function superstore_related_products() {
-	global $woo_options;
+	global $woo_options, $post;
+	$single_layout = get_post_meta( $post->ID, '_layout', true );
 	$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
-	if ( isset( $woo_options['woo_layout'] ) && ( $woo_options['woo_layout'] == 'layout-full' ) || $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' ) {
+	if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 		$products_cols = 4;
 	} else {
 		$products_cols = 3;
@@ -189,14 +201,16 @@ function superstore_related_products() {
 		'columns'        => $products_cols,
 	);
 	return $args;
-}*/
+}
 
 // Upsells
 if ( ! function_exists( 'woo_upsell_display' ) ) {
 	function woo_upsell_display() {
 	    // Display up sells in correct layout.
-		global $woo_options;
-		if ( isset( $woo_options['woo_layout'] ) && ( $woo_options['woo_layout'] == 'layout-full' ) || $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' ) {
+		global $woo_options, $post;
+		$single_layout = get_post_meta( $post->ID, '_layout', true );
+
+		if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 			$products_cols = 4;
 		} else {
 			$products_cols = 3;
@@ -359,7 +373,13 @@ function superstore_user() {
 	global $current_user;
 	$url_myaccount 		= get_permalink( woocommerce_get_page_id( 'myaccount' ) );
 	$url_editaddress 	= get_permalink( woocommerce_get_page_id( 'edit_address' ) );
-	$url_changepass 	= get_permalink( woocommerce_get_page_id( 'change_password' ) );
+	if ( version_compare( WOOCOMMERCE_VERSION, "2.1" ) >= 0 ) {
+		// WooCommerce 2.1 or above is active
+		$url_changepass = woocommerce_customer_edit_account_url();
+	} else {
+		// WooCommerce is less than 2.1
+		$url_changepass = get_permalink( woocommerce_get_page_id( 'change_password' ) );
+	}
 	$url_vieworder 		= get_permalink( woocommerce_get_page_id( 'view_order' ) );
 
 	?>
@@ -385,9 +405,7 @@ function superstore_user() {
 						<li class="edit-address"><a href="<?php echo $url_editaddress; ?>" class="tiptip" title="<?php _e( 'Edit Address', 'woothemes' ); ?>"><span><?php _e( 'Edit Address', 'woothemes' ); ?></span></a></li>
 					<?php } ?>
 
-					<?php if ( woocommerce_get_page_id( 'change_password' ) !== -1 ) { ?>
-						<li class="edit-password"><a href="<?php echo $url_changepass; ?>" class="tiptip" title="<?php _e( 'Change Password', 'woothemes' ); ?>"><span><?php _e( 'Change Password', 'woothemes' ); ?></span></a></li>
-					<?php } ?>
+					<li class="edit-password"><a href="<?php echo $url_changepass; ?>" class="tiptip" title="<?php _e( 'Change Password', 'woothemes' ); ?>"><span><?php _e( 'Change Password', 'woothemes' ); ?></span></a></li>
 
 					<?php if ( woocommerce_get_page_id( 'view_order' ) !== -1 ) { ?>
 						<li class="logout"><a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="tiptip" title="<?php _e( 'Logout', 'woothemes' ); ?>"><span><?php _e( 'Logout', 'woothemes' ); ?></span></a></li>
@@ -425,17 +443,20 @@ add_action( 'woo_main_after', 'woocommerce_get_sidebar', 10 );
 
 if ( ! function_exists( 'woocommerce_get_sidebar' ) ) {
 	function woocommerce_get_sidebar() {
-		global $woo_options;
+		global $woo_options, $post;
 
 		// Display the sidebar if full width option is disabled on archives
-		if ( is_shop() || is_product_category() || is_product_tag() ) {
+		if ( is_shop() || is_product_category() || is_product_tag() || is_tax( apply_filters( 'superstore_sidebar_taxonomies', $taxonomies = 'product_brand' ) ) ) {
 			if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'false' == $woo_options['woocommerce_archives_fullwidth'] ) {
 				get_sidebar('shop');
 			}
 		}
 
+		// Display the sidebar on product details page if the full width option is not enabled.
+		$single_layout = get_post_meta( $post->ID, '_layout', true );
+
 		if ( is_product() ) {
-			if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'false' ) {
+			if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'false' || ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && $single_layout != "" && $single_layout != "layout-full" && $single_layout != "layout-default" ) ) {
 				get_sidebar('shop');
 			}
 		}
@@ -477,16 +498,17 @@ function woocommerceframework_woo_pagination_defaults ( $settings ) {
 add_filter( 'body_class','wooframework_layout_body_class', 10 );		// Add layout to body_class output
 if ( ! function_exists( 'wooframework_layout_body_class' ) ) {
 	function wooframework_layout_body_class( $wc_classes ) {
-		global $woo_options;
+		global $woo_options, $post;
 
 		$layout = '';
 		$nav_visibility = '';
+		$single_layout = get_post_meta( $post->ID, '_layout', true );
 
 		// Add layout-full class if full width option is enabled
 		if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'true' == $woo_options['woocommerce_archives_fullwidth'] && ( is_shop() || is_product_category() || is_product_tag() ) ) {
 			$layout = 'layout-full';
 		}
-		if ( $woo_options[ 'woocommerce_products_fullwidth' ] == "true" && ( is_product() ) ) {
+		if ( ( $woo_options[ 'woocommerce_products_fullwidth' ] == "true" && is_product() ) && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 			$layout = 'layout-full';
 		}
 
@@ -530,7 +552,7 @@ function superstore_mini_cart() {
 	?>
 
 	<ul class="cart">
-		<li class="container">
+		<li class="container <?php if ( is_cart() ) echo 'active'; ?>">
 
        		<?php
 

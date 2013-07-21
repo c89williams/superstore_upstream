@@ -13,7 +13,7 @@
   {
     if( !( 'ontouchstart' in window ) &&
       !window.navigator.msPointerEnabled &&
-      !navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
+      !navigator.userAgent.toLowerCase().match( /windows phone/i ) ) return false;
 
     this.each( function()
     {

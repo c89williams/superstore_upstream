@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.0.8
+Version: 1.0.13
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1386,15 +1386,20 @@ ul.nav li a {
   width: 100%;
   border: 0;
   float: none;
-  margin: 0;
-  margin: 0 -1.918em;
-  padding: 1.918em;
+  margin: 0 -1em;
+  padding: 1em 1em;
+  /*margin:0 -1.918em;
+	padding:1.918em;*/
+
 }
 .footer-wrap {
   background: #364245;
   color: #7d9398;
-  margin: 0 -1.618em;
-  padding: 1em 1.618em;
+  margin: 0 -1em;
+  padding: 1em;
+  /*margin:0 -1.618em;
+	padding:1em 1.618em;*/
+
 }
 .footer-wrap a {
   color: #b5c2c5;
@@ -1776,6 +1781,9 @@ ul.nav li a {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+}
+.page-template-template-contact-php #single_map_canvas img {
+  background: none;
 }
 .page-template-template-contact-php #main #connect {
   background: none;

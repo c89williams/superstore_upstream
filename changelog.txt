@@ -1,5 +1,29 @@
 *** Superstore Changelog ***
 
+2013.07.08 - version 1.0.13
+ * includes/js/general.js - Fixes disappearing nav on iPad portrait and small tablets.
+ * css/layout.css
+   includes/theme-woocommerce.php - Fixed active states for menu items including cart.
+ * style.css - Fixes issue with images on the map on the contact page having a white background.
+
+2013.06.28 - version 1.0.12
+ * css/woocommerce.css - Animations only animate on desktops. Removed scale on hover on homepage category links.
+ * includes/js/featured-slider.js - Pause on hover fix.
+ * includes/js/third-party.js - IE10 dropdowns no longer require double click to go.
+
+2013.06.24 - version 1.0.11
+ * includes/theme-js.php - Infinite scroll now fires on product tag & brand archives. The taxonomies it fires on are also filterable.
+ * includes/theme-woocommerce.php - Taxonomies queried in woocommerce_get_sidebar() are now filterable. Updated how WooCommerce styles are disabled for 2.1 compatibility. Updated change password URL in superstore_user() for 2.1 compatibility. Related products filtered for 2.1 compatibility.
+ * template-contact.php - Removed defunct twitter feed
+
+2013.06.17 - version 1.0.10
+ * Fixed a bug when using individual product layouts.
+
+2013.06.12 - version 1.0.9
+ * includes/theme-woocommerce.php - Sidebar now visible on brand archives.
+ * style.css - Fixed horizontal scroll on handheld devices.
+ * includes/theme-woocommerce.php - Product layout meta will now override global full-width option for product details pages
+
 2013.05.21 - version 1.0.8
  * includes/js/jquery.prettyphoto.js - Update to latest. Resolves keyboard shortcuts refreshing the add review lightbox.
  * includes/theme-functions.php

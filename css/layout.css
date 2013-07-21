@@ -643,10 +643,9 @@ body:after {
     background-clip: padding-box;
   }
   #navigation ul.nav > li.current_page_item a,
-  #navigation ul.nav li.current_page_parent a,
   #navigation ul.nav li.current-menu-ancestor a,
   #navigation ul.nav li.current-cat a,
-  #navigation ul.nav li.li.current-menu-item a {
+  #navigation ul.nav li.current-menu-item a {
     color: #ffffff;
     background: #2ab6d6;
   }

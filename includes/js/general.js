@@ -58,11 +58,11 @@ jQuery(document).ready(function($){
 	if ( ! navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
 
 		// Payment box fixed
-		if (jQuery(window).width() > 767) {
+		if (jQuery(window).width() > 768) {
 			var bh = $('body').height();
 		   	var pos = $('#payment').position();
 
-		   	if (jQuery(window).width() > 767) {
+		   	if (jQuery(window).width() > 768) {
 				$('#payment').top
 		   	}
 
@@ -84,7 +84,7 @@ jQuery(document).ready(function($){
 				// console.log(bh);
 		   	});
 			$(window).resize(function(){
-				if (jQuery(window).width() > 767) {
+				if (jQuery(window).width() > 768) {
 					$('#payment').removeAttr('style').removeClass('fixed');
 				} else {
 					$('#payment').css('width',$('#order_review .shop_table').width());
@@ -93,11 +93,11 @@ jQuery(document).ready(function($){
 		}
 
 		// #navigation fixed
-		if (jQuery(window).width() > 767) {
+		if (jQuery(window).width() > 768) {
 			var bh = $('body').height();
 		   	var pos = $('#navigation').position();
 
-		   	if (jQuery(window).width() > 767) {
+		   	if (jQuery(window).width() > 768) {
 				$('#navigation').top
 		   	}
 
@@ -107,7 +107,7 @@ jQuery(document).ready(function($){
 			var b = $(window).height();
 			var w = $(document).width();
 
-			if (jQuery(window).width() > 767) {
+			if (jQuery(window).width() > 768) {
 			   if (c > 30+pos.top){
 				$('#navigation').css('position','fixed').css('width',$('.header-top').width()).addClass('fixed');
 			   } else {
@@ -119,7 +119,7 @@ jQuery(document).ready(function($){
 				// console.log(bh);
 		   	});
 			$(window).resize(function(){
-				if (jQuery(window).width() > 767) {
+				if (jQuery(window).width() > 768) {
 					$('#navigation').removeAttr('style').removeClass('fixed');
 				} else {
 					$('#navigation').css('width',$('#order_review .shop_table').width());
