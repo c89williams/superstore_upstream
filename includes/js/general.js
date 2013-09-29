@@ -4,7 +4,9 @@
 jQuery(document).ready(function($){
 
 	// Fix dropdowns in Android
-	$( '.nav li:has(ul)' ).doubleTapToGo();
+	if ( /Android/i.test( navigator.userAgent ) && jQuery( window ).width() > 769 ) {
+		$( '.nav li:has(ul)' ).doubleTapToGo();
+	}
 
 	// Table alt row styling
 	jQuery( '.entry table tr:odd' ).addClass( 'alt-table-row' );

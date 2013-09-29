@@ -249,10 +249,7 @@ if ( ! function_exists( 'woo_custom_typography' ) ) {
 					$output .= '.entry, .entry p { '.woo_generate_font_css($woo_options[ 'woo_font_post_entry' ], '1.5').' } h1, h2, h3, h4, h5, h6 { font-family: '.stripslashes($woo_options[ 'woo_font_post_entry' ]['face']).', arial, sans-serif; }'  . "\n";
 
 				if ( isset( $woo_options['woo_font_widget_titles'] ) && $woo_options['woo_font_widget_titles'] )
-					$output .= '.widget h3 { '.woo_generate_font_css($woo_options[ 'woo_font_widget_titles' ]).' }'  . "\n";
-
-				if ( isset( $woo_options['woo_font_widget_titles'] ) && $woo_options['woo_font_widget_titles'] )
-					$output .= '.widget h3 { '.woo_generate_font_css($woo_options[ 'woo_font_widget_titles' ]).' }'  . "\n";
+					$output .= '#sidebar .widget h3 { '.woo_generate_font_css($woo_options[ 'woo_font_widget_titles' ]).' text-transform:none !important; }'  . "\n";
 
 				// Component titles
 				if ( isset( $woo_options['woo_font_component_titles'] ) && $woo_options['woo_font_component_titles'] )
@@ -556,6 +553,34 @@ if ( ! function_exists( 'woo_load_responsive_IE_footer' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* Add featured image to posts */
+/*-----------------------------------------------------------------------------------*/
+
+if ( ! function_exists( 'woo_add_featured_image' ) ) {
+function woo_add_featured_image() {
+	$settings = array(
+					'thumb_w' => 800,
+					'thumb_h' => 300,
+					'thumb_align' => 'aligncenter'
+					);
+
+	$settings = woo_get_dynamic_values( $settings );
+
+	woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( $settings['thumb_h'] ) . '&class=thumbnail ' . esc_attr( $settings['thumb_align'] ) );
+}
+}
+
+add_action( 'woo_post_inside_before', 'woo_add_featured_image' );
+
+function woo_remove_testimonial_image() {
+	if ( 'testimonial' == get_post_type() ) {
+		remove_action( 'woo_post_inside_before', 'woo_add_featured_image' );
+	}
+}
+
+add_action( 'get_header', 'woo_remove_testimonial_image' );
+
+/*-----------------------------------------------------------------------------------*/
 /* Customise the display of the testmonials */
 /*-----------------------------------------------------------------------------------*/
 
@@ -566,6 +591,64 @@ function woo_customise_testimonials_template ( $template ) {
 }
 
 add_filter( 'woothemes_testimonials_item_template', 'woo_customise_testimonials_template' );
+
+if ( ! function_exists( 'woo_get_testimonial_image' ) ) {
+function woo_get_testimonial_image ( $id, $size ) {
+	$response = '';
+
+	if ( has_post_thumbnail( $id ) ) {
+		// If not a string or an array, and not an integer, default to 150x9999.
+		if ( ( is_int( $size ) || ( 0 < intval( $size ) ) ) && ! is_array( $size ) ) {
+			$size = array( intval( $size ), intval( $size ) );
+		} elseif ( ! is_string( $size ) && ! is_array( $size ) ) {
+			$size = array( 50, 50 );
+		}
+		$response = get_the_post_thumbnail( intval( $id ), $size, array( 'class' => 'avatar' ) );
+	} else {
+		$gravatar_email = get_post_meta( $id, '_gravatar_email', true );
+		if ( '' != $gravatar_email && is_email( $gravatar_email ) ) {
+			$response = get_avatar( $gravatar_email, $size );
+		}
+	}
+
+	return $response;
+} // End woo_get_testimonial_image()
+}
+
+if ( ! function_exists( 'woo_customise_testimonials_archive' ) ) {
+function woo_customise_testimonials_archive( $meta_output ) {
+	if ( 'testimonial' == get_post_type() ) {
+		$id = get_the_ID();
+		$author = get_the_title();
+		$info = get_post_custom();
+		$meta_output = '<aside class="post-meta">' . "\n" . woo_get_testimonial_image( $id, 100 ) . '<ul>';
+		if (isset( $author )) {
+			$meta_output .= '<li><cite class="author">' . $author . '</cite></li>' . "\n";
+		}
+		if (isset( $info['_byline'][0] )) {
+			$meta_output .= '<li><span class="excerpt">' . $info['_byline'][0] . '</span><!--/.excerpt--></li>' . "\n";
+		}
+		if (isset( $info['_url'][0] )) {
+			$meta_output .= '<li><span class="url"><a href="' . esc_url( $info['_url'][0] ) . '">' . $info['_url'][0] . '</a></span></li>' . "\n";
+		}
+		$meta_output .= '</ul>' . "\n" . '</aside>' . "\n";
+	}
+	return $meta_output;
+}
+}
+
+add_filter( 'woo_post_meta', 'woo_customise_testimonials_archive' );
+
+if ( ! function_exists( 'woo_testimonial_post_class' ) ) {
+function woo_testimonial_post_class( $classes ) {
+	if ( 'testimonial' == get_post_type() ) {
+		$classes[] = 'post';
+	}
+	return $classes;
+}
+}
+
+add_filter( 'post_class', 'woo_testimonial_post_class' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Control homepage content */

@@ -15,16 +15,10 @@ function woocommerce_support() {
 // Disable WooCommerce styles
 if ( version_compare( WOOCOMMERCE_VERSION, "2.1" ) >= 0 ) {
 	// WooCommerce 2.1 or above is active
-	add_action( 'wp_enqueue_scripts', 'woo_wc_dequeue_styles' );
+	add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 } else {
 	// WooCommerce is less than 2.1
 	define( 'WOOCOMMERCE_USE_CSS', false );
-}
-
-function woo_wc_dequeue_styles() {
-	wp_dequeue_style( 'woocommerce_frontend_styles_layout' );
-	wp_dequeue_style( 'woocommerce_frontend_styles_smallscreen' );
-	wp_dequeue_style( 'woocommerce_frontend_styles' );
 }
 
 // Remove default review stuff - the theme overrides it
@@ -85,7 +79,7 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_product_thum
 add_action( 'woocommerce_before_subcategory_title', 'woocommerce_product_thumbnail_wrap_close', 15, 2);
 if (!function_exists('woocommerce_product_thumbnail_wrap_close')) {
 	function woocommerce_product_thumbnail_wrap_close() {
-		echo '<span class="details-link">' .__( 'Product Details', 'woothemes' ) . '</span>';
+		echo '<span class="details-link"></span>';
 		echo '</div> <!--/.wrap-->';
 	}
 }
@@ -346,6 +340,7 @@ if ( ! function_exists( 'woocommerce_theme_after_content' ) ) {
 
 			</div><!-- /#main -->
 	        <?php woo_main_after(); ?>
+	        <?php do_action( 'woocommerce_sidebar' ); ?>
 
 	    </div><!-- /#content -->
 		<?php woo_content_after(); ?>
@@ -408,7 +403,7 @@ function superstore_user() {
 					<li class="edit-password"><a href="<?php echo $url_changepass; ?>" class="tiptip" title="<?php _e( 'Change Password', 'woothemes' ); ?>"><span><?php _e( 'Change Password', 'woothemes' ); ?></span></a></li>
 
 					<?php if ( woocommerce_get_page_id( 'view_order' ) !== -1 ) { ?>
-						<li class="logout"><a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="tiptip" title="<?php _e( 'Logout', 'woothemes' ); ?>"><span><?php _e( 'Logout', 'woothemes' ); ?></span></a></li>
+						<li class="logout"><a href="<?php echo wp_logout_url( $_SERVER['REQUEST_URI'] ); ?>" class="tiptip" title="<?php _e( 'Logout', 'woothemes' ); ?>"><span><?php _e( 'Logout', 'woothemes' ); ?></span></a></li>
 					<?php } ?>
 
 				<?php } ?>
@@ -439,14 +434,14 @@ if (!function_exists('woo_custom_breadcrumbs_args')) {
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 // Add the WC sidebar in the right place and remove it from shop archives if specified
-add_action( 'woo_main_after', 'woocommerce_get_sidebar', 10 );
+add_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 if ( ! function_exists( 'woocommerce_get_sidebar' ) ) {
 	function woocommerce_get_sidebar() {
 		global $woo_options, $post;
 
 		// Display the sidebar if full width option is disabled on archives
-		if ( is_shop() || is_product_category() || is_product_tag() || is_tax( apply_filters( 'superstore_sidebar_taxonomies', $taxonomies = 'product_brand' ) ) ) {
+		if ( ! is_product() ) {
 			if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'false' == $woo_options['woocommerce_archives_fullwidth'] ) {
 				get_sidebar('shop');
 			}
@@ -502,10 +497,12 @@ if ( ! function_exists( 'wooframework_layout_body_class' ) ) {
 
 		$layout = '';
 		$nav_visibility = '';
-		$single_layout = get_post_meta( $post->ID, '_layout', true );
+		if ( ! is_404() ) {
+			$single_layout = get_post_meta( $post->ID, '_layout', true );
+		}
 
 		// Add layout-full class if full width option is enabled
-		if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'true' == $woo_options['woocommerce_archives_fullwidth'] && ( is_shop() || is_product_category() || is_product_tag() ) ) {
+		if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'true' == $woo_options['woocommerce_archives_fullwidth'] && ( is_shop() || is_post_type_archive( 'product' ) || is_tax( get_object_taxonomies( 'product' ) ) ) ) {
 			$layout = 'layout-full';
 		}
 		if ( ( $woo_options[ 'woocommerce_products_fullwidth' ] == "true" && is_product() ) && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {

@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.0.13
+Version: 1.0.19
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -847,6 +847,14 @@ ul.nav { // Styles applied to all instances of navigation
 			}
 		}
 	}
+	.post.contact-form {
+		input[type="checkbox"] {
+			-webkit-appearance:checkbox;
+		}
+		input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+			display: none;
+		}
+	}
 
 
 	/* 3.1 Images */
@@ -930,6 +938,39 @@ ul.nav { // Styles applied to all instances of navigation
 			margin:0;
 		}
 	}
+}
+
+.post-type-archive-testimonial {
+	.post {
+		.entry {
+			position: relative;
+			&:before {
+				content: "";
+				display: block;
+				border: 1em solid #ffffff;
+				border-color: transparent transparent transparent #ffffff;
+				position: absolute;
+				top: 3em;
+				right: -2em;
+			}
+		}
+		img {
+			.border_radius(100%);
+			margin:0 auto 1em;
+			padding: 0;
+			float:none;
+		}
+	}
+}
+
+.widget_woothemes_testimonials .testimonials .quote .testimonials-text:before {
+  content: "";
+  display: block;
+  border: 1em solid #ffffff;
+  border-color: #ffffff transparent transparent transparent;
+  position: absolute;
+  bottom: -2em;
+  left: 45%;
 }
 
 
@@ -1036,18 +1077,27 @@ ul.nav { // Styles applied to all instances of navigation
 		}
 		a:before {
 			font-family: Social;
-			font-size: 1.9em;
+			font-size: 1.618em;
 			line-height: 1;
-			margin-right: 0.2em;
+			margin-right: .202em;
+			margin-bottom:.202em;
+			color: #fff;
+			padding:.326em;
+			.border_radius(3px);
+			display: inline-block;
 		}
-		a.subscribe:before { content: '\e002'; }
-		a.twitter:before { content: '\e004'; }
-		a.facebook:before { content: '\e005'; }
-		a.youtube:before { content: '\e008'; }
-		a.flickr:before { content: '\e006'; }
-		a.linkedin:before { content: '\e000'; }
-		a.delicious:before { content: '\e001'; }
-		a.googleplus:before { content: '\e003'; }
+		a.subscribe:before { content: '\e001'; background-color: #FF6600; }
+		a.twitter:before { content: '\e002'; background-color: #00aced; }
+		a.facebook:before { content: '\e003'; background-color: #3b5998; }
+		a.youtube:before { content: '\e004'; background-color: #af2b26; }
+		a.flickr:before { content: '\e005'; background-color: #ff0084; }
+		a.linkedin:before { content: '\e006'; background-color: #71c5ef; }
+		a.delicious:before { content: '\e007'; background-color: #285da7; }
+		a.googleplus:before { content: '\e008'; background-color: #2d2d2d; font-weight: bold;}
+		a.dribbble:before { content: '\e009'; background-color: #ea4c89; }
+		a.instagram:before { content: '\e010'; background-color: #517fa4; }
+		a.vimeo:before { content: '\e011'; background-color: #33454E; }
+		a.pinterest:before { content: '\e012'; background-color: #cb2027; }
 	}
 }
 

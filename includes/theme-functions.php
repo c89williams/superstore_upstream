@@ -144,25 +144,31 @@ if (!function_exists( 'woo_pagenav')) {
 
 if (!function_exists( 'woo_post_meta')) {
 	function woo_post_meta( ) {
-?>
-<aside class="post-meta">
-	<ul>
-		<li class="post-date">
-			<span><?php the_time( get_option( 'date_format' ) ); ?></span>
-		</li>
-		<li class="post-author">
-			<?php the_author_posts_link(); ?>
-		</li>
-		<li class="post-category">
-			<?php the_category( ' ') ?>
-		</li>
-		<li class="post-comments">
-			<?php comments_popup_link( __( 'Leave a comment', 'woothemes' ), __( '1 Comment', 'woothemes' ), __( '% Comments', 'woothemes' ) ); ?>
-		</li>
-		<?php the_tags( '<li class="post-tags">', ' ', '</li>' ); ?>
-	</ul>
-</aside>
-<?php
+		$num_comments = get_comments_number();
+		if ( comments_open() ) {
+			if ( $num_comments == 0 ) {
+				$comments = __('Leave a Comment', 'woothemes');
+			} elseif ( $num_comments > 1 ) {
+				$comments = $num_comments . __(' Comments', 'woothemes');
+			} else {
+				$comments = __('1 Comment', 'woothemes');
+			}
+			$write_comments = '<a href="' . esc_url( get_comments_link() ) .'">'. $comments.'</a>';
+		} else {
+			$write_comments =  __('Comments off.', 'woothemes');
+		}
+		$meta_output = apply_filters('woo_post_meta', '<aside class="post-meta">
+			<ul>
+				<li class="post-date">
+					<span>' . get_the_time( get_option( 'date_format' ) ) . '</span>
+				</li>
+				<li class="post-author"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a></li>
+				<li class="post-category">' . get_the_category_list( ' ') . '</li>
+				<li class="post-comments">' . $write_comments . '</li>'
+				 . get_the_tag_list( '<li class="post-tags">', ' ', '</li>' ) . '
+			</ul>
+		</aside>');
+		echo $meta_output;
 	}
 }
 
@@ -191,7 +197,11 @@ if (!function_exists( 'woo_subscribe_connect')) {
 						'connect_linkedin' => '',
 						'connect_delicious' => '',
 						'connect_rss' => '',
-						'connect_googleplus' => ''
+						'connect_googleplus' => '',
+						'connect_dribbble' => '',
+						'connect_instagram' => '',
+						'connect_vimeo' => '',
+						'connect_pinterest' => ''
 						);
 		$settings = woo_get_dynamic_values( $settings );
 
@@ -258,6 +268,18 @@ if (!function_exists( 'woo_subscribe_connect')) {
 
 		   		<?php } if ( $settings['connect_googleplus' ] != "" ) { ?>
 		   		<a href="<?php echo esc_url( $settings['connect_googleplus'] ); ?>" class="googleplus" title="Google+"></a>
+
+		   		<?php } if ( $settings['connect_dribbble' ] != "" ) { ?>
+		   		<a target="_blank" href="<?php echo esc_url( $settings['connect_dribbble'] ); ?>" class="dribbble" title="Dribbble"></a>
+
+				<?php } if ( $settings['connect_instagram' ] != "" ) { ?>
+		   		<a target="_blank" href="<?php echo esc_url( $settings['connect_instagram'] ); ?>" class="instagram" title="Instagram"></a>
+
+				<?php } if ( $settings['connect_vimeo' ] != "" ) { ?>
+		   		<a target="_blank" href="<?php echo esc_url( $settings['connect_vimeo'] ); ?>" class="vimeo" title="Vimeo"></a>
+
+				<?php } if ( $settings['connect_pinterest' ] != "" ) { ?>
+		   		<a target="_blank" href="<?php echo esc_url( $settings['connect_pinterest'] ); ?>" class="pinterest" title="Pinterest"></a>
 
 				<?php } ?>
 			</div>
@@ -362,7 +384,10 @@ if ( ! function_exists( 'woo_archive_description' ) ) {
 
 		// Archive Description, if one is available.
 		$term_obj = get_queried_object();
-		$description = term_description( $term_obj->term_id, $term_obj->taxonomy );
+		$description = '';
+		if ( ! is_post_type_archive( ) ) {
+			$description = term_description( $term_obj->term_id, $term_obj->taxonomy );
+		}
 
 		if ( $description != '' ) {
 			// Allow child themes/plugins to filter here ( 1: text in DIV and paragraph, 2: term object )
@@ -655,7 +680,7 @@ if ( ! function_exists( 'woo_featured_slider_get_slides' ) ) {
 function woo_featured_slider_get_slides ( $args ) {
 	$defaults = array( 'limit' => '5', 'order' => 'DESC', 'term' => '0' );
 	$args = wp_parse_args( (array)$args, $defaults );
-	$query_args = array( 'post_type' => 'slide' );
+	$query_args = array( 'post_type' => 'slide', 'suppress_filters' => false );
 	if ( in_array( strtoupper( $args['order'] ), array( 'ASC', 'DESC' ) ) ) {
 		$query_args['order'] = strtoupper( $args['order'] );
 	}
@@ -728,7 +753,7 @@ if ( ! function_exists( 'superstore_infinite_scroll_js' ) ) {
 	function superstore_infinite_scroll_js() {
 		if ( ! is_woocommerce_activated() ) return;
 		global $woo_options;
-	    if ( isset( $woo_options['woocommerce_archives_infinite_scroll'] ) && ( 'true' == $woo_options['woocommerce_archives_infinite_scroll'] ) && ( is_shop() || is_product_category() ) ) { ?>
+	    if ( isset( $woo_options['woocommerce_archives_infinite_scroll'] ) && ( 'true' == $woo_options['woocommerce_archives_infinite_scroll'] ) && ( is_shop() || is_post_type_archive( 'product' ) || is_tax( get_object_taxonomies( 'product' ) ) ) ) { ?>
 	    <script>
 	    if ( ! navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
 		    var infinite_scroll = {

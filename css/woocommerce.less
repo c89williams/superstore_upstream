@@ -825,11 +825,10 @@ ul.products {
 				left:50%;
 				margin-top:-2.937em;
 				margin-left:-2.937em;
-				text-indent: -999em;
 				background-color: rgba(0,0,0,0.9);
 				.border_radius(100%);
 				.scale(0);
-				.transition(all,ease-in-out,.2s);
+				.transition(all,ease-in-out,.35s);
 				&:before {
 					.iconbefore;
 					content: "\f002";
@@ -840,7 +839,6 @@ ul.products {
 					text-align: center;
 					font-size:2.618em;
 					color:#fff;
-					text-indent: 0;
 					line-height: 2.244;
 				}
 			}
@@ -874,6 +872,10 @@ ul.products {
 				border-color:transparent transparent #fff transparent;
 				display: block;
 			}
+		}
+		.woocommerce_msrp {
+			background:#fff;
+			padding:1em;
 		}
 		.categories {
 			margin:0;
@@ -962,6 +964,11 @@ ul.products {
 			h3 {
 				padding-bottom:1em;
 				.border_radius_bottom;
+			}
+		}
+		&.featured {
+			.woocommerce_msrp {
+				background: none;
 			}
 		}
 	}
@@ -1622,7 +1629,8 @@ table.cart {
 	}
 }
 
-// Wishlists bits
+// Extensions
+// Wishlists
 .woocommerce-tabs .wl-panel {
 	padding:0;
 }
@@ -1630,6 +1638,23 @@ table.cart {
 .nav-hidden.woocommerce-checkout {
 	.footer-wrap, .nav-toggle, .top-nav, .widget_product_search, #content + .breadcrumbs-wrap {
 		display: none;
+	}
+}
+
+// Product Bundles
+.single-product .summary {
+	.bundled_product_summary {
+		width:100%;
+		margin:0 0 1.618em;
+		.product_title {
+			float: none;
+			width:100%;
+		}
+		.images {
+			margin-left:0;
+			margin-bottom:0;
+			width:30%;
+		}
 	}
 }
 
@@ -2098,23 +2123,35 @@ table.cart {
 
 	// Single product
 	.single-product {
-		.product {
+		> .product {
 			.row(9);
 		}
-		.images {
-			.column(4,9);
-			.thumbnails {
-				.row(4);
-				a {
-					display: block;
-					.column(1,4);
+		.product {
+			.images {
+				.column(4,9);
+				.thumbnails {
+					.row(4);
+					a {
+						display: block;
+						.column(1,4);
+					}
 				}
 			}
+			.product {
+				.images {
+					margin-left:0;
+					margin-right:0;
+					display: block;
+				}
+			}
+		}
+		.bto_item .details {
+			overflow: visible !important;
 		}
 		.summary {
 			.column(5,9);
 			.clearfix;
-			.product_title {
+			> .product_title {
 				float:left;
 				width:74.5%;
 			}

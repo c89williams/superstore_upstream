@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.0.13
+Version: 1.0.19
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1684,6 +1684,16 @@ ul.nav li a {
   margin: 0;
   vertical-align: -0.4em;
 }
+.post .post.contact-form input[type="checkbox"],
+.type-page .post.contact-form input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+.post .post.contact-form input[type="checkbox"]:before,
+.type-page .post.contact-form input[type="checkbox"]:before,
+.post .post.contact-form input[type="checkbox"]:checked:before,
+.type-page .post.contact-form input[type="checkbox"]:checked:before {
+  display: none;
+}
 .post .woo-image,
 .type-page .woo-image {
   -webkit-box-sizing: border-box;
@@ -1789,6 +1799,37 @@ ul.nav li a {
   background: none;
   padding: 0;
   margin: 0;
+}
+.post-type-archive-testimonial .post .entry {
+  position: relative;
+}
+.post-type-archive-testimonial .post .entry:before {
+  content: "";
+  display: block;
+  border: 1em solid #ffffff;
+  border-color: transparent transparent transparent #ffffff;
+  position: absolute;
+  top: 3em;
+  right: -2em;
+}
+.post-type-archive-testimonial .post img {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin: 0 auto 1em;
+  padding: 0;
+  float: none;
+}
+.widget_woothemes_testimonials .testimonials .quote .testimonials-text:before {
+  content: "";
+  display: block;
+  border: 1em solid #ffffff;
+  border-color: #ffffff transparent transparent transparent;
+  position: absolute;
+  bottom: -2em;
+  left: 45%;
 }
 /* 3.2 Pagination / WP-Pagenavi / Woo-Pagination */
 .nav-entries,
@@ -1926,33 +1967,67 @@ ul.nav li a {
 }
 #connect .social a:before {
   font-family: Social;
-  font-size: 1.9em;
+  font-size: 1.618em;
   line-height: 1;
-  margin-right: 0.2em;
+  margin-right: .202em;
+  margin-bottom: .202em;
+  color: #fff;
+  padding: .326em;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  display: inline-block;
 }
 #connect .social a.subscribe:before {
-  content: '\e002';
+  content: '\e001';
+  background-color: #FF6600;
 }
 #connect .social a.twitter:before {
-  content: '\e004';
+  content: '\e002';
+  background-color: #00aced;
 }
 #connect .social a.facebook:before {
-  content: '\e005';
+  content: '\e003';
+  background-color: #3b5998;
 }
 #connect .social a.youtube:before {
-  content: '\e008';
+  content: '\e004';
+  background-color: #af2b26;
 }
 #connect .social a.flickr:before {
-  content: '\e006';
+  content: '\e005';
+  background-color: #ff0084;
 }
 #connect .social a.linkedin:before {
-  content: '\e000';
+  content: '\e006';
+  background-color: #71c5ef;
 }
 #connect .social a.delicious:before {
-  content: '\e001';
+  content: '\e007';
+  background-color: #285da7;
 }
 #connect .social a.googleplus:before {
-  content: '\e003';
+  content: '\e008';
+  background-color: #2d2d2d;
+  font-weight: bold;
+}
+#connect .social a.dribbble:before {
+  content: '\e009';
+  background-color: #ea4c89;
+}
+#connect .social a.instagram:before {
+  content: '\e010';
+  background-color: #517fa4;
+}
+#connect .social a.vimeo:before {
+  content: '\e011';
+  background-color: #33454E;
+}
+#connect .social a.pinterest:before {
+  content: '\e012';
+  background-color: #cb2027;
 }
 .widget #connect .fl,
 .widget #connect .fr {
@@ -3584,6 +3659,12 @@ input[type="radio"] {
 
   height: 1.618em;
   width: 1.618em;
+  /* Safari/Chrome, other WebKit */
+
+  /* Firefox, other Gecko */
+
+  /* Opera/IE 8+ */
+
   font-size: .857em;
   border: 0.618em solid #364245;
   background: #364245;
@@ -3635,6 +3716,8 @@ button.button,
   /* Inputs need pointers! */
 
   overflow: visible;
+  /* IE fix */
+
   width: auto;
   /* IE fix */
 

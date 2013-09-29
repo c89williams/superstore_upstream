@@ -12,25 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Setup default variables, overriding them if the "Theme Options" have been saved.
  */
 
- 	$settings = array(
-					'thumb_w' => 800,
-					'thumb_h' => 300,
-					'thumb_align' => 'aligncenter'
-					);
-
-	$settings = woo_get_dynamic_values( $settings );
-
 ?>
+
+	<?php woo_post_before(); ?>
 
 	<article <?php post_class(); ?>>
 
-
-
 		<div class="post-content">
 
-			<?php
-		    	woo_image( 'width=' . $settings['thumb_w'] . '&height=' . $settings['thumb_h'] . '&class=thumbnail ' . $settings['thumb_align'] );
-		    ?>
+			<?php woo_post_inside_before(); ?>
 
 			<section class="entry">
 
@@ -46,9 +36,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					<span class="read-more"><a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Continue Reading &rarr;', 'woothemes' ); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></a></span>
 				<?php } ?>
 				</footer>
+
 			</section>
 
+			<?php woo_post_inside_after(); ?>
+
 		</div><!--/.post-content-->
+
+		<?php woo_post_after(); ?>
 
 		<?php woo_post_meta(); ?>
 

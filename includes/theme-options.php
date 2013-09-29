@@ -789,13 +789,13 @@ $options[] = array( 'name' => __( 'WP Post Thumbnail - Hard Crop', 'woothemes' )
     				'type' => 'checkbox' );
 
 $options[] = array( 'name' => __( 'TimThumb - Custom Settings Panel', 'woothemes' ),
-    				'desc' => sprintf( __( 'This will enable the %1$s (thumb.php) script which dynamically resizes images added through the <strong>custom settings panel below the post</strong>. Make sure your themes <em>cache</em> folder is writable. %2$s', 'woothemes' ), '<a href="http://code.google.com/p/timthumb/">TimThumb</a>', '<a href="http://www.woothemes.com/2008/10/troubleshooting-image-resizer-thumbphp/">Need help?</a>' ),
+    				'desc' => sprintf( __( 'This will enable the %1$s (thumb.php) script which dynamically resizes images added through the <strong>custom settings panel below the post</strong>. Make sure your themes <em>cache</em> folder is writable. %2$s', 'woothemes' ), '<a href="http://code.google.com/p/timthumb/">TimThumb</a>', '<a href="http://docs.woothemes.com/document/docs-featured-images/">Need help?</a>' ),
     				'id' => $shortname . '_resize',
     				'std' => 'true',
     				'type' => 'checkbox' );
 
 $options[] = array( 'name' => __( 'Automatic Image Thumbnail', 'woothemes' ),
-    				'desc' => __( 'If no thumbnail is specifified then the first uploaded image in the post is used.', 'woothemes' ),
+    				'desc' => __( 'If no thumbnail is specified then the first uploaded image in the post is used.', 'woothemes' ),
     				'id' => $shortname . '_auto_img',
     				'std' => 'false',
     				'type' => 'checkbox' );
@@ -1016,6 +1016,30 @@ $options[] = array( 'name' => __( 'Google+ URL', 'woothemes' ),
     				'id' => $shortname . '_connect_googleplus',
     				'std' => '',
     				'type' => 'text' );
+
+$options[] = array( 'name' => __( 'Dribbble', 'woothemes' ),
+                    'desc' => sprintf( __( 'Enter your %1$s URL e.g. http://dribbble.com/woothemes', 'woothemes' ), '<a href="http://dribbble.com/">'.__( 'Dribbble', 'woothemes' ).'</a>' ),
+                    'id' => $shortname . '_connect_dribbble',
+                    'std' => '',
+                    'type' => 'text' );
+
+$options[] = array( 'name' => __( 'Instagram', 'woothemes' ),
+                    'desc' => sprintf( __( 'Enter your %1$s URL e.g. http://instagram.com/woothemes', 'woothemes' ), '<a href="http://instagram.com">'.__( 'Instagram', 'woothemes' ).'</a>' ),
+                    'id' => $shortname . '_connect_instagram',
+                    'std' => '',
+                    'type' => 'text' );
+
+$options[] = array( 'name' => __( 'Vimeo', 'woothemes' ),
+                    'desc' => sprintf( __( 'Enter your %1$s URL e.g. http://vimeo.com/woothemes', 'woothemes' ), '<a href="http://vimeo.com/">'.__( 'Vimeo', 'woothemes' ).'</a>' ),
+                    'id' => $shortname . '_connect_vimeo',
+                    'std' => '',
+                    'type' => 'text' );
+
+$options[] = array( 'name' => __( 'Pinterest', 'woothemes' ),
+                    'desc' => sprintf( __( 'Enter your %1$s URL e.g. http://pinterest.com/woothemes', 'woothemes' ), '<a href="http://pinterest.com/">'.__( 'Pinterest', 'woothemes' ).'</a>' ),
+                    'id' => $shortname . '_connect_pinterest',
+                    'std' => '',
+                    'type' => 'text' );
 
 /* Advertising */
 

@@ -1,5 +1,37 @@
 *** Superstore Changelog ***
 
+2013.09.16 - version 1.0.19
+ * content.php - added wooframework hooks.
+ * includes/theme-functions.php - Fixes notices on post type archives. Added Dribbble, Instagram, Vimeo & Pinterest to Subscribe & Connect.
+ * css/woocommerce.css - improved Composite Products integration.
+ * includes/theme-options.php - Fixed typo & broken help link in theme options. Added Subscribe & Connect settings for Dribbble, Instagram, Vimeo & Pinterest.
+ * style.css - Added styles for Dribbble, Instagram, Vimeo & Pinterest in Subscribe and Connect. Fixed checkbox when using shortcode contact form.
+
+2013.08.14 - version 1.0.18
+ * includes/theme-woocommerce.php - Logout link now redirects to the current page.
+ * css/woocommerce.css - Tweaked CSS to improve compatibility with Composite Products extension.
+
+2013.08.12 - version 1.0.17
+ * includes/js/general.js - Better check for Android tablets before fireing doubleTapToGo.
+ * includes/theme-woocommerce.php - Tweaked how WooCommerce styles are dequeued for 2.1.
+ * includes/theme-actions.php - Custom typography widget title fix.
+
+2013.08.07 - version 1.0.16
+ * includes/theme-woocommerce.php - Fixed issue where setting archives to full width affected all WooCommerce pages.
+ * css/woocommerce.css - Fixed white "flicker" on the homepage when using a black background. Improves integration with Product Bundles.
+ * Removed template-sitemap.php and template-timeline.php. Please use http://wordpress.org/plugins/archives-by-woothemes/
+
+2013.07.29 - version 1.0.15
+ * includes/theme-functions.php - Slider now works with WPML.
+ * css/woocommerce.css - Improved integration with MSRP extension.
+ * includes/theme-woocommerce.php - Better checks before calling WooCommerce sidebar.
+
+2013.07.19 - version 1.0.14
+ * includes/js/general.js - Tweaked how doubleTapToGo is fired to fix IE10 issue.
+ * css/layout.css - Added max-width to #logo to fix Firefox issue.
+ * includes/theme-functions.php - infinite scroll now works on all product archives.
+ * styles/shadows.css - Now works in IE and Firefox.
+
 2013.07.08 - version 1.0.13
  * includes/js/general.js - Fixes disappearing nav on iPad portrait and small tablets.
  * css/layout.css

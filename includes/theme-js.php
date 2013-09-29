@@ -28,7 +28,7 @@ if ( ! function_exists( 'woothemes_add_javascript' ) ) {
 
 		// Load infinite scroll on shop page / product cats
 		if ( is_woocommerce_activated() ) {
-			if ( ( $woo_options['woocommerce_archives_infinite_scroll'] == 'true' ) && ( is_shop() || is_product_category() || is_product_tag() || is_tax( apply_filters( 'superstore_infinite_scroll_taxonomies', $taxonomies = 'product_brand' ) ) ) ) {
+			if ( ( $woo_options['woocommerce_archives_infinite_scroll'] == 'true' ) && ( is_woocommerce() ) ) {
 				wp_enqueue_script( 'infinite-scroll' );
 			}
 		}

@@ -834,6 +834,7 @@ body:after {
     *margin-left: 1.3368055555555556%;
     *margin-right: 1.3368055555555556%;
     margin-bottom: 0;
+    max-width: 100%;
   }
   #header .header-top .row #logo img {
     padding-left: 2.387em;
