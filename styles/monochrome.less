@@ -613,7 +613,7 @@ p.woo-sc-box, div.woo-sc-box {
 	    			}
 	    		}
 	    	}
-	    	> li.current_page_item, li.current_page_parent, li.current-menu-ancestor, li.current-cat, li.li.current-menu-item {
+	    	> li.current_page_item, li.current_page_parent, li.current-menu-ancestor, li.current-cat, li.current-menu-item {
 				a {
 					color: @bg_light + #111;
 					background: @color_links + #333;
@@ -760,6 +760,14 @@ p.woo-sc-box, div.woo-sc-box {
 					background:@color_alt;
 					span.contents {
 						background:@color_alt - #111;
+					}
+				}
+			}
+			&.active {
+				a.cart-contents {
+					background: @color_links;
+					span.contents {
+						background: @color_alt - #111;
 					}
 				}
 			}

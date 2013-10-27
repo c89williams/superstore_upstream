@@ -849,6 +849,9 @@ ul.products {
 			margin:0 auto;
 			.border_radius_top;
 			.transition();
+			padding:0;
+			border:0;
+			width: inherit; // Fixes ie8 stretching issue
 		}
 		span.onsale {
 			position: absolute;
@@ -1875,6 +1878,59 @@ table.cart {
 			}
 		}
 	}
+	// Product columns when using WooCommerce shortcodes
+	.entry {
+		.woocommerce {
+			&.columns-1 {
+				ul.products {
+					li.product {
+						width:100%;
+						margin-right:0;
+					}
+				}
+			}
+
+			&.columns-2 {
+				ul.products {
+					li.product {
+						width:48%;
+					}
+				}
+			}
+
+			&.columns-3 {
+				ul.products {
+					li.product {
+						width:30.75%;
+					}
+				}
+			}
+
+			&.columns-4 {
+				ul.products {
+					li.product {
+						width:22.05%;
+					}
+				}
+			}
+
+			&.columns-5 {
+				ul.products {
+					li.product {
+						width:16.95%;
+					}
+				}
+			}
+
+			&.columns-6 {
+				ul.products {
+					li.product {
+						width:13.5%;
+					}
+				}
+			}
+		}
+	}
 	.home {
 		.woocommerce-columns-4 {
 			ul.products {
@@ -2349,6 +2405,12 @@ table.cart {
 		#payment {
 			margin-right:0;
 		}
+	}
+	// Integration with Smart Coupons
+	.sc_info_box {
+		width:48.4%;
+		float:right;
+		.borderbox;
 	}
 }
 .ie8, .ie9 {

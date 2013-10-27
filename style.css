@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.0.19
+Version: 1.0.21
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -2336,6 +2336,10 @@ ul.nav li a {
 .woocommerce_tabs .tab ol,
 .woocommerce-tabs .tab ol {
   margin-left: 1.387em;
+}
+.widget_woothemes_features,
+.widget_woothemes_testimonials {
+  -webkit-transform: translateZ(0);
 }
 .widget_woothemes_features .features .feature,
 .widget_woothemes_testimonials .features .feature,

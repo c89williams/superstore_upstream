@@ -1,5 +1,13 @@
 *** Superstore Changelog ***
 
+2013.10.11 - version 1.0.21
+ * style.css - Fixed small animation flicker in testimonials / features when homepage slider animation is set to 'slide'.
+ * styles/*.css - Fixed inconsistent active navigation element styling.
+ * css/woocommerce.css - Fixed image height issue in ie8.
+
+2013.09.19 - version 1.0.20
+ * css/woocommerce.css - Product shortcodes in posts / pages will honour the specified layout columns (requires WooCommerce 2.1). Better integration with Smart Coupons. Fixed product img border issue.
+
 2013.09.16 - version 1.0.19
  * content.php - added wooframework hooks.
  * includes/theme-functions.php - Fixes notices on post type archives. Added Dribbble, Instagram, Vimeo & Pinterest to Subscribe & Connect.
