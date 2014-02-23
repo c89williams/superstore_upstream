@@ -8,9 +8,6 @@
  * @package 	WooCommerce/Templates
  * @version     1.6.4
  */
-/**
- * Addition: display cat description
- */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -27,11 +24,11 @@ if ( empty( $woocommerce_loop['columns'] ) )
 // Increase loop count
 $woocommerce_loop['loop']++;
 ?>
-<li class="product product-category<?php
+<li class="product-category product<?php
+    if ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 || $woocommerce_loop['columns'] == 1 )
+        echo ' first';
 	if ( $woocommerce_loop['loop'] % $woocommerce_loop['columns'] == 0 )
 		echo ' last';
-	elseif ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 )
-		echo ' first';
 	?>">
 
 	<?php do_action( 'woocommerce_before_subcategory', $category ); ?>
@@ -48,17 +45,13 @@ $woocommerce_loop['loop']++;
 		?>
 
 		<h3>
-			<?php echo $category->name; ?>
-			<?php if ( $category->count > 0 ) : ?>
-				<mark class="count">(<?php echo $category->count; ?>)</mark>
-			<?php endif; ?>
-		</h3>
+			<?php
+				echo $category->name;
 
-		<?php
-			if ( is_home() ) {
-				echo '<span class="view-more">' .__('View products', 'woothemes') . '</span>';
-			}
-		?>
+				if ( $category->count > 0 )
+					echo apply_filters( 'woocommerce_subcategory_count_html', ' <mark class="count">(' . $category->count . ')</mark>', $category );
+			?>
+		</h3>
 
 		<?php
 			/**

@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.0.21
+Version: 1.1.0
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -474,7 +474,7 @@ ul.nav { // Styles applied to all instances of navigation
 	    	}
 	    }
 	}
-	hgroup {
+	.heading-group {
 		.clearfix;
 		margin-bottom:1em;
         h1, h2, h3 {
@@ -782,7 +782,7 @@ ul.nav { // Styles applied to all instances of navigation
 	margin-bottom:1.618em;
 }
 
-.post, .type-page {
+.hentry {
 	margin:0 0 2.618em;
 	.clearfix;
 
@@ -870,6 +870,7 @@ ul.nav { // Styles applied to all instances of navigation
 		background: #fff;
 		max-width: 100%;
 		height: auto;
+		.borderbox;
 		&:hover {
 			border-color: darken(@border_main, 10%);
 		}
@@ -1763,40 +1764,6 @@ li.comment #respond {
 /* 6. PAGE TEMPLATES */
 /*-------------------------------------------------------------------------------------------*/
 
-/* 6.1 Timeline Page Template */
-#archives {
-	.archives_list {
-		border-left:1px solid @border_main;
-		list-style: none;
-		margin:0 0 1em 1em;
-		li {
-			clear: left;
-			padding-left:2.327em;
-			font-style: normal;
-			list-style: none;
-		}
-		.date {
-			color: lighten(@color_body, 10%);
-			width:22.5%;
-			display: inline-block;
-		}
-		.linked {
-			width:48%;
-			display: inline-block;
-		}
-		.comments {
-			width:22.5%;
-			display: inline-block;
-			a {
-				color: lighten(@color_body, 15%);
-				padding-left:1.236em;
-				&:hover {
-					text-decoration: none;
-				}
-			}
-		}
-	}
-}
 h3.archive_year {
 	font-weight: bold;
 	color: @color_body;
@@ -1981,23 +1948,6 @@ ul.contact {
 	}
 }
 
-/* 6.4 Archives & Sitemap */
-.page-template-template-archives-php,  .page-template-template-sitemap-php  {
-	#main  {
-		.post, .page  {
-			h3, h4  {
-				font-weight: bold;
-			}
-			ul, ol  {
-				list-style: none;
-				margin-left: 0;
-				ul, ol  {
-					margin-left: 20px;
-				}
-			}
-		}
-	}
-}
 @media screen and (max-width: 768px) {
 	.page-template-template-archives-php,  .page-template-template-sitemap-php  {
 		#main  {
@@ -2273,6 +2223,7 @@ button.button,
 	-webkit-box-shadow:none;
 	box-shadow:none;
 	text-shadow:none;
+	-webkit-font-smoothing: antialiased;
 
 	&:hover {
 		background-color: @color_alt;
@@ -2349,6 +2300,12 @@ button.button,
 	&.alt {
 		background: @color_alt;
 	}
+	& + .button,
+	& + input[type=submit],
+	& + input.button,
+	& + button.button, {
+		margin-left: .236em;
+	}
 }
 .added_to_cart, .added_to_cart:hover {
 	padding: .53em 1.387em;
@@ -2424,6 +2381,18 @@ ul.gform_fields {
 	margin-bottom: 1.618em;
 }
 
+.gfield_radio {
+	list-style: none;
+	margin-left:0 !important;
+	input[type="radio"] {
+		width: 1.618em !important;
+		height: 1.618em !important;
+	}
+	input[type="text"] {
+		width: auto;
+	}
+}
+
 .gfield_label {
 	width:100%;
 	font-weight: bold;
@@ -2474,13 +2443,81 @@ ul.gform_fields {
 			margin-left:.618em;
 		}
 
-		input {
+		input[type="radio"] {
 			width:1.387em;
 		}
 	}
 }
 
 img.ui-datepicker-trigger { border: 0; padding:0; }
+
+// Tabs
+#my-courses {
+	clear: both;
+
+	ul.nav-tabs,
+	ul.tabs,
+	ul.ui-tabs-nav {
+		margin-bottom: 1.618em;
+		margin-left: 0;
+		list-style: none;
+		border-bottom: 1px solid @border_main;
+		.clearfix;
+
+		li {
+			float: left;
+			margin-bottom: 0;
+			display: block;
+
+			a {
+				border-bottom: 0;
+				background: fade(@border_main,50%);
+				border: 1px solid @border_main;
+				border-bottom-width: 0;
+				border-right-width: 0;
+				display: block;
+				color: @color_body;
+				margin: 0 !important;
+				-webkit-border-radius: 	0 !important;
+				-moz-border-radius: 	0 !important;
+				border-radius: 			0 !important;
+				padding: .382em .53em !important;
+
+				&:hover {
+					color: @color_links;
+				}
+			}
+
+			&:last-child {
+				a {
+					border-right-width: 1px;
+				}
+			}
+
+			&.active,
+			&.ui-tabs-active {
+				position: relative;
+
+				a {
+					position: relative;
+					background: #fff;
+					color: @color_links;
+
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -4px;
+						left: 0;
+						right: 0;
+						height: 4px;
+						background: #fff;
+					}
+				}
+			}
+		}
+	}
+}
 
 /* 8.5 IE specific styling */
 .ie6 {

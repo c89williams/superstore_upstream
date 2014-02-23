@@ -66,8 +66,6 @@ class Woo_Featured_Products extends WP_Widget {
 
 								<h3><?php the_title(); ?></h3>
 
-
-
 							</a>
 
 							<?php

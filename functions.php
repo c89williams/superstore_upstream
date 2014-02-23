@@ -19,7 +19,8 @@ $includes = array(
 				'includes/theme-comments.php', 			// Custom comments/pingback loop
 				'includes/theme-js.php', 				// Load JavaScript via wp_enqueue_script
 				'includes/sidebar-init.php', 			// Initialize widgetized areas
-				'includes/theme-widgets.php'			// Theme widgets
+				'includes/theme-widgets.php',			// Theme widgets
+				'includes/theme-plugin-integrations.php'// Plugin integrations
 				);
 
 // Allow child themes/plugins to add widgets to be loaded.
@@ -27,10 +28,6 @@ $includes = apply_filters( 'woo_includes', $includes );
 
 foreach ( $includes as $i ) {
 	locate_template( $i, true );
-}
-
-if ( is_woocommerce_activated() ) {
-	locate_template( 'includes/theme-woocommerce.php', true );
 }
 
 /*-----------------------------------------------------------------------------------*/

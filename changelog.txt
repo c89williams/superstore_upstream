@@ -1,5 +1,43 @@
 *** Superstore Changelog ***
 
+2014.02.11 - version 1.1.0
+ * Requires WooCommerce 2.1 +
+
+ * New - Better integration with Points & Rewards.
+   css/woocommerce.css
+
+ * New - Better Sensei integration.
+   includes/integrations/sensei/*
+
+ * New - Integration with Our Team plugin.
+   inludes/integrations/our-team/*
+
+ * New - Integration with Archives plugin
+   includes/integrations/archives/*
+
+ * Tweak - Separated WooCommerce integration.
+   includes/integrations/woocommerce/*
+
+ * Tweak - Improve integration with WooFramework breadcrumbs.
+   includes/integrations/woocommerce/woocommerce.php
+
+ * Tweak - Remove WooCommerce 2.1 average rating function.
+   includes/integrations/woocommerce/woocommerce.php
+
+ * Tweak - Added better support for Features archive / single pages
+   css/layout.less,
+   css/layout.css,
+   style.less,
+   style.css
+
+ * Tweak - Some validation fixes (remove hgroup tag and chrome frame meta)
+   header.php,
+   styles/monochrome.less,
+   styles/monochrome.css,
+   includes/theme-actions.php,
+   css/layout.less,
+   css/layout.css
+
 2013.10.11 - version 1.0.21
  * style.css - Fixed small animation flicker in testimonials / features when homepage slider animation is set to 'slide'.
  * styles/*.css - Fixed inconsistent active navigation element styling.

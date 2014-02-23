@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 	global $woo_options;
- 
+
 /**
  * The Variables
  *
@@ -13,37 +13,37 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
  	$settings = array(
-					'thumb_w' => 768, 
-					'thumb_h' => 300, 
+					'thumb_w' => 768,
+					'thumb_h' => 300,
 					'thumb_align' => 'aligncenter'
 					);
-					
+
 	$settings = woo_get_dynamic_values( $settings );
- 
+
 ?>
 
 	<article <?php post_class(); ?>>
 
-		
 
-		<div class="post-content">	 
 
-			<?php 
-		    	woo_image( 'width=' . $settings['thumb_w'] . '&height=' . $settings['thumb_h'] . '&class=thumbnail ' . $settings['thumb_align'] ); 
-		    ?>       
+		<div class="post-content">
+
+			<?php
+		    	woo_image( 'width=' . $settings['thumb_w'] . '&height=' . $settings['thumb_h'] . '&class=thumbnail ' . $settings['thumb_align'] );
+		    ?>
 
 			<section class="entry">
 
 				<header class="post-header">
-	        
-		            <h1><a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Continue Reading &rarr;', 'woothemes' ); ?>"><?php the_title(); ?></a></h1>
-		                            	
+
+		            <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Continue Reading &rarr;', 'woothemes' ); ?>"><?php the_title(); ?></a></h1>
+
 		        </header>
-		        
+
 				<?php the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
 			</section>
 
-		</div><!--/.post-content-->  
+		</div><!--/.post-content-->
 
 		<?php woo_post_meta(); ?>
 

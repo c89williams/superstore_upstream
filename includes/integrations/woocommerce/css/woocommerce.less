@@ -1,5 +1,5 @@
-@import "mixins";
-@import "grid";
+@import url(../../../../css/mixins.less);
+@import url(../../../../css/grid.less);
 
 // Header
 #header {
@@ -946,12 +946,14 @@ ul.products {
 		.button.loading {
 			.opacity(0.3);
 			&:after {
-				.iconafter;
+				display: inline-block;
 				content: "\f021";
-				-webkit-animation: spin-360 1s infinite linear;
-				-moz-animation: spin-360 1s infinite linear;
-				-o-animation: spin-360 1s infinite linear;
-				animation: spin-360 1s infinite linear;
+				font-family: 'FontAwesome';
+				margin-left:.618em;
+				-webkit-animation-name: spin-360;
+				-webkit-animation-duration: 1s;
+				-webkit-animation-iteration-count: infinite;
+				width: 1em;
 			}
 		}
 		.button.added {
@@ -1263,6 +1265,7 @@ ul.products {
 	}
 	.summary {
 		margin-bottom:2.618em;
+		position: relative;
 		.rating-wrap {
 			.clearfix;
 			padding:1em;
@@ -1330,6 +1333,24 @@ ul.products {
 				.comment-form-comment {
 					clear:both;
 				}
+			}
+		}
+	}
+	// Points & Rewards
+	.wc-points-rewards-product-message {
+		display: block;
+		clear:both;
+		margin-bottom:1.618em;
+
+		& + div[itemprop="offers"], & + .price {
+			position: absolute;
+			top:0;
+			right:1.7%;
+			width:25%;
+		}
+		& + div[itemprop="offers"] {
+			.price {
+				width:100%;
 			}
 		}
 	}
@@ -2037,9 +2058,6 @@ table.cart {
 						margin-right:5.7%;
 						margin-bottom:0 !important;
 					}
-					h3 {
-						margin-top:1.618em;
-					}
 					h3, .excerpt, .rating-wrap, .categories {
 						width:47%;
 						float:right;
@@ -2059,6 +2077,7 @@ table.cart {
 					}
 					.rating-wrap {
 						width:16%;
+						margin-top: 0;
 					}
 					&.first {
 						clear:left;
@@ -2179,7 +2198,7 @@ table.cart {
 
 	// Single product
 	.single-product {
-		> .product {
+		#main > .product {
 			.row(9);
 		}
 		.product {

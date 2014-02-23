@@ -39,11 +39,11 @@ woo_head();
 
 				<?php woo_header_inside(); ?>
 
-			    <hgroup>
+			    <div class="heading-group">
 					<span class="nav-toggle"><a href="#navigation"><span><?php _e( 'Navigation', 'woothemes' ); ?></span></a></span>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</hgroup>
+				</div>
 
 				<?php woo_nav_before(); ?>
 

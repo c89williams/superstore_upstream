@@ -263,7 +263,7 @@ INDEX
 			background: lighten(@bg_light,3%);
 			.row {
 				.row(12);
-				hgroup {
+				.heading-group {
 			        .column(3);
 			        padding-left:2.387em;
 			        .borderbox;
@@ -346,7 +346,7 @@ INDEX
 			}
 			&.banner {
 				.row {
-					hgroup, #topad {
+					.heading-group, #topad {
 						.column(6);
 						margin-bottom:1.618em;
 					}
@@ -592,7 +592,7 @@ INDEX
 		}
 	}
 
-	article.post {
+	.hentry {
 		.post-meta {
 			ul {
 				list-style: none;
@@ -749,7 +749,13 @@ INDEX
 		padding:0;
 	}
 
-	.post .entry, .type-page .entry, #comments li.comment .comment_container .comment-text, .page .entry, .page #contactForm, #respond {
+	.post .entry,
+	.type-page .entry,
+	#comments li.comment .comment_container .comment-text,
+	.page .entry,
+	.page #contactForm,
+	#respond,
+	.type-feature .entry {
 		padding:2.618em;
 	}
 

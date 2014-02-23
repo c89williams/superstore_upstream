@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 				<header class="post-header">
 
-		            <h1><a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Continue Reading &rarr;', 'woothemes' ); ?>"><?php the_title(); ?></a></h1>
+		            <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Continue Reading &rarr;', 'woothemes' ); ?>"><?php the_title(); ?></a></h1>
 
 		        </header>
 
