@@ -94,7 +94,9 @@
 	}
 }
 
-.single-course article.type-course, .single-lesson article.type-lesson, .single-quiz article.type-quiz,
+.single-course article.type-course,
+.single-lesson article.type-lesson,
+.single-quiz article.type-quiz,
 .learner-info {
 	background: #fff;
 	.border_radius;
@@ -104,6 +106,10 @@
 
 	.entry {
 		padding: 0 !important;
+	}
+
+	header {
+		.clearfix();
 	}
 }
 
@@ -247,6 +253,17 @@ a.sensei-certificate-link {
 	&.user_wrong {
 		.message("\f05c", @error);
 	}
+
+	&.has_notes {
+		.notes {
+			display: none;
+		}
+	}
+}
+
+.sensei-message {
+	.message("\f129", @info);
+	margin: 1em 0;
 }
 
 .user_right {
@@ -332,7 +349,7 @@ a.sensei-certificate-link {
 		}
 
 		.view-results {
-			float: right;
+			margin-right: .236em;
 		}
 	}
 }

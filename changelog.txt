@@ -1,5 +1,20 @@
 *** Superstore Changelog ***
 
+2014.03.06 - version 1.1.1
+ * Tweak - Several small Sensei styling issues
+   includes/integrations/sensei/css/sensei.less
+   includes/integrations/sensei/css/sensei.less
+
+ * Tweak - Removed deprecated use of ereg_replace
+   inclules/theme-comments.php
+
+ * Tweak - Shape of the footer social icons.
+   css/layout.less
+   css/layout.css
+
+ * Fix - Updated fitvids to the latest stable version
+   includes/js/third-party.js
+
 2014.02.11 - version 1.1.0
  * Requires WooCommerce 2.1 +
 

@@ -66,8 +66,6 @@ if ( ! function_exists( 'list_pings' ) ) {
 if ( ! function_exists( 'the_commenter_link' ) ) {
 	function the_commenter_link() {
 	    $commenter = get_comment_author_link();
-	    if ( preg_match( '/]* class=[^>]+>/', $commenter ) ) {$commenter = preg_replace( '(]* class=[\'"]?)', '\\1url ' , $commenter );
-	    } else { $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );}
 	    echo $commenter ;
 	} // End the_commenter_link()
 }

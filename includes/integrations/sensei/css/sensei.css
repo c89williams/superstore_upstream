@@ -585,6 +585,39 @@ body:after {
 .learner-info .entry {
   padding: 0 !important;
 }
+.single-course article.type-course header,
+.single-lesson article.type-lesson header,
+.single-quiz article.type-quiz header,
+.learner-info header {
+  *zoom: 1;
+}
+.single-course article.type-course header:after,
+.single-lesson article.type-lesson header:after,
+.single-quiz article.type-quiz header:after,
+.learner-info header:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+.single-course article.type-course header:before,
+.single-lesson article.type-lesson header:before,
+.single-quiz article.type-quiz header:before,
+.learner-info header:before,
+.single-course article.type-course header:after,
+.single-lesson article.type-lesson header:after,
+.single-quiz article.type-quiz header:after,
+.learner-info header:after {
+  content: "";
+  display: table;
+}
+.single-course article.type-course header:after,
+.single-lesson article.type-lesson header:after,
+.single-quiz article.type-quiz header:after,
+.learner-info header:after {
+  clear: both;
+}
 .meter {
   clear: both;
   height: 1.618em;
@@ -837,6 +870,31 @@ a.sensei-certificate-link:before {
   text-align: center;
   padding: 1em .618em;
 }
+.answer_message.has_notes .notes {
+  display: none;
+}
+.sensei-message {
+  padding: 1em 1.618em 1em 5.874em;
+  border-top: 0.202em solid #3c8bae;
+  background: #ebebeb;
+  margin-bottom: 2.618em;
+  font-weight: normal;
+  position: relative;
+  margin: 1em 0;
+}
+.sensei-message:before {
+  font-family: 'FontAwesome';
+  content: "\f129";
+  color: #3c8bae;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2.618em;
+  background: #f0f0f0;
+  text-align: center;
+  padding: 1em .618em;
+}
 .user_right {
   color: #89b93f;
 }
@@ -939,7 +997,7 @@ a.sensei-certificate-link:before {
   margin-right: .236em;
 }
 .single-course .course-meta .view-results {
-  float: right;
+  margin-right: .236em;
 }
 .course .total-grade {
   border-top: 2px solid #e7e7e7;
