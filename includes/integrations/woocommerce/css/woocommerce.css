@@ -1306,6 +1306,9 @@ ul.woocommerce-error li {
   margin-left: 1.8518518518518516%;
   line-height: 1;
 }
+#infscr-loading:before {
+  display: none;
+}
 #infscr-loading img {
   width: 16px;
   height: 16px;

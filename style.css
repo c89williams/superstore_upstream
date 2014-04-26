@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.1.1
+Version: 1.1.2
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1467,12 +1467,12 @@ ul.nav li a {
 #footer hr {
   display: inline;
   float: left;
-  width: 97.22222222222221%;
-  margin-left: 1.3888888888888888%;
-  margin-right: 1.3888888888888888%;
-  *width: 97.17013888888889%;
-  *margin-left: 1.3368055555555556%;
-  *margin-right: 1.3368055555555556%;
+  width: 97.22222222%;
+  margin-left: 1.38888889%;
+  margin-right: 1.38888889%;
+  *width: 97.17013889%;
+  *margin-left: 1.33680556%;
+  *margin-right: 1.33680556%;
   height: 2px;
   background: rgba(0, 0, 0, 0.1);
   margin-bottom: 2.618em;
@@ -2414,18 +2414,15 @@ ul.nav li a {
   float: right;
   width: 72.7%;
 }
-.widget_woothemes_testimonials .testimonials .quote a.avatar-link {
-  display: block;
-  text-align: center;
-}
-.widget_woothemes_testimonials .testimonials .quote a.avatar-link img {
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
+.widget_woothemes_testimonials .testimonials .quote img {
+  -webkit-border-radius: 0;
+  border-radius: 0;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  display: block;
   margin: 0 auto;
-  float: none;
+  float: none ;
 }
 .widget_woothemes_testimonials .testimonials .quote .testimonials-text {
   -webkit-box-sizing: border-box;
@@ -2569,12 +2566,12 @@ ul.nav li a {
 }
 #comments li.comment .comment_container {
   display: block;
-  width: 103.7037037037037%;
-  margin-left: -1.8518518518518516%;
-  margin-right: -1.8518518518518516%;
-  *width: 103.65162037037037%;
-  *margin-left: -1.903935185185185%;
-  *margin-right: -1.903935185185185%;
+  width: 103.7037037%;
+  margin-left: -1.85185185%;
+  margin-right: -1.85185185%;
+  *width: 103.65162037%;
+  *margin-left: -1.90393519%;
+  *margin-right: -1.90393519%;
   margin-bottom: 1.618em;
   *zoom: 1;
 }
@@ -2616,12 +2613,12 @@ ul.nav li a {
   background-clip: padding-box;
   display: inline;
   float: left;
-  width: 7.4074074074074066%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 7.3553240740740735%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 7.40740741%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 7.35532407%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
   height: auto;
 }
 #comments li.comment .comment_container .avatar img {
@@ -2637,12 +2634,12 @@ ul.nav li a {
 #comments li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 74.07407407407408%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 74.02199074074075%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 74.07407407%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 74.02199074%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;
@@ -2687,17 +2684,17 @@ ul.nav li a {
   content: "\f007";
 }
 #comments li.comment ul.children li.comment .comment_container {
-  margin-left: 9.722222222222221%;
+  margin-left: 9.72222222%;
 }
 #comments li.comment ul.children li.comment .comment_container .avatar {
   display: inline;
   float: left;
-  width: 7.4074074074074066%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 7.3553240740740735%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 7.40740741%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 7.35532407%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #comments li.comment ul.children li.comment .comment_container .avatar img {
   width: 100%;
@@ -2707,12 +2704,12 @@ ul.nav li a {
 #comments li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 62.96296296296296%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 62.910879629629626%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 62.96296296%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 62.91087963%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #comments li.comment ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 21.055556%;
@@ -2720,12 +2717,12 @@ ul.nav li a {
 #comments li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 51.85185185185185%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 51.79976851851851%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 51.85185185%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 51.79976852%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 32.6%;
@@ -2733,21 +2730,21 @@ ul.nav li a {
 #comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 40.74074074074074%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 40.688657407407405%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 40.74074074%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 40.68865741%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment .comment_container {
   display: block;
-  width: 103.7037037037037%;
-  margin-left: -1.8518518518518516%;
-  margin-right: -1.8518518518518516%;
-  *width: 103.65162037037037%;
-  *margin-left: -1.903935185185185%;
-  *margin-right: -1.903935185185185%;
+  width: 103.7037037%;
+  margin-left: -1.85185185%;
+  margin-right: -1.85185185%;
+  *width: 103.65162037%;
+  *margin-left: -1.90393519%;
+  *margin-right: -1.90393519%;
   *zoom: 1;
 }
 .page #comments li.comment .comment_container:after {
@@ -2768,12 +2765,12 @@ ul.nav li a {
 .page #comments li.comment .comment_container .avatar {
   display: inline;
   float: left;
-  width: 7.4074074074074066%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 7.3553240740740735%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 7.40740741%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 7.35532407%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment .comment_container .avatar img {
   width: 100%;
@@ -2783,25 +2780,25 @@ ul.nav li a {
 .page #comments li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 85.18518518518519%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 85.13310185185186%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 85.18518519%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 85.13310185%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment ul.children li.comment .comment_container {
-  margin-left: 9.722222222222221%;
+  margin-left: 9.72222222%;
 }
 .page #comments li.comment ul.children li.comment .comment_container .avatar {
   display: inline;
   float: left;
-  width: 7.4074074074074066%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 7.3553240740740735%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 7.40740741%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 7.35532407%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment ul.children li.comment .comment_container .avatar img {
   width: 100%;
@@ -2811,12 +2808,12 @@ ul.nav li a {
 .page #comments li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 74.07407407407408%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 74.02199074074075%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 74.07407407%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 74.02199074%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 21.055556%;
@@ -2824,12 +2821,12 @@ ul.nav li a {
 .page #comments li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 62.96296296296296%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 62.910879629629626%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 62.96296296%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 62.91087963%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 .page #comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 44.055556%;
@@ -2837,12 +2834,12 @@ ul.nav li a {
 .page #comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 40.74074074074074%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 40.688657407407405%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 40.74074074%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 40.68865741%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #reviews #comments > h2 {
   width: auto;
@@ -2859,22 +2856,22 @@ ul.nav li a {
 #reviews #comments li.comment .comment_container .avatar {
   display: inline;
   float: left;
-  width: 7.4074074074074066%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 7.3553240740740735%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 7.40740741%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 7.35532407%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #reviews #comments li.comment .comment_container .comment-text {
   display: inline;
   float: left;
-  width: 85.18518518518519%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 85.13310185185186%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 85.18518519%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 85.13310185%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
 }
 #reviews #comments li.comment .comment_container .comment-text:after {
   border-color: transparent #ffffff transparent transparent;
@@ -2965,12 +2962,12 @@ li.comment #respond {
 .pinglist {
   margin: 0;
   display: block;
-  width: 103.7037037037037%;
-  margin-left: -1.8518518518518516%;
-  margin-right: -1.8518518518518516%;
-  *width: 103.65162037037037%;
-  *margin-left: -1.903935185185185%;
-  *margin-right: -1.903935185185185%;
+  width: 103.7037037%;
+  margin-left: -1.85185185%;
+  margin-right: -1.85185185%;
+  *width: 103.65162037%;
+  *margin-left: -1.90393519%;
+  *margin-right: -1.90393519%;
   *zoom: 1;
 }
 .pinglist:after {
@@ -2993,12 +2990,12 @@ li.comment #respond {
   list-style-type: decimal;
   display: inline;
   float: left;
-  width: 74.07407407407408%;
-  margin-left: 1.8518518518518516%;
-  margin-right: 1.8518518518518516%;
-  *width: 74.02199074074075%;
-  *margin-left: 1.7997685185185184%;
-  *margin-right: 1.7997685185185184%;
+  width: 74.07407407%;
+  margin-left: 1.85185185%;
+  margin-right: 1.85185185%;
+  *width: 74.02199074%;
+  *margin-left: 1.79976852%;
+  *margin-right: 1.79976852%;
   opacity: 0.5;
   filter: alpha(opacity=@opacity * 100);
 }

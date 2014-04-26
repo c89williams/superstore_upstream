@@ -1,5 +1,14 @@
 *** Superstore Changelog ***
 
+2014.04.11 - version 1.1.2
+ * Fix - Remove incorrect icon on loading message when infinite scroll is enabled.
+   includes/integrations/woocommerce/woocommerce.less
+   includes/integrations/woocommerce/woocommerce.css
+
+ * Tweak - Correctly align the testmonial gravatar under the block quote.
+   includes/integrations/woocommerce/woocommerce.less
+   includes/integrations/woocommerce/woocommerce.css
+
 2014.03.06 - version 1.1.1
  * Tweak - Several small Sensei styling issues
    includes/integrations/sensei/css/sensei.less

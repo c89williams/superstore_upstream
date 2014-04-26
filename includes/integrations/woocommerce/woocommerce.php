@@ -317,10 +317,20 @@ if ( ! function_exists( 'woocommerce_custom_product_thumbnails_columns' ) ) {
  * Add to cart text
  * Tweak the add to cart text to say 'Add' instead.
  */
-add_filter( 'add_to_cart_text', 'superstore_custom_cart_button_text' );
-add_filter( 'woocommerce_product_add_to_cart_text', 'superstore_custom_cart_button_text' );
-function superstore_custom_cart_button_text() {
-    return __( 'Add', 'woothemes' );
+add_filter( 'add_to_cart_text', 'superstore_custom_cart_button_text', 10, 2 );
+add_filter( 'woocommerce_product_add_to_cart_text', 'superstore_custom_cart_button_text', 10, 2 );
+function superstore_custom_cart_button_text( $text, $product ) {
+
+    // by default set the text to Add
+    $result = 'Add';
+
+    // if the text is 'Read More' the product is most likely out of stock so 'Add' doesn't make much sense. Let's replace it with Info since space is tight
+    if ( 'Read More' == $text ) {
+        $result = 'Info';
+    }
+
+    // return the result
+    return __( $result, 'woothemes' );
 }
 
 
