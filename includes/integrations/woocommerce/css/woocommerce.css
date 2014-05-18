@@ -2079,7 +2079,7 @@ ul.products li.product.featured .woocommerce_msrp {
   margin-bottom: 2.618em;
   position: relative;
 }
-.single-product .summary .rating-wrap {
+.single-product .summary .woocommerce-product-rating {
   *zoom: 1;
   padding: 1em;
   background: #f3f3f3;
@@ -2090,22 +2090,22 @@ ul.products li.product.featured .woocommerce_msrp {
   background-clip: padding-box;
   margin-bottom: 0;
 }
-.single-product .summary .rating-wrap:after {
+.single-product .summary .woocommerce-product-rating:after {
   content: "\0020";
   display: block;
   height: 0;
   overflow: hidden;
   clear: both;
 }
-.single-product .summary .rating-wrap:before,
-.single-product .summary .rating-wrap:after {
+.single-product .summary .woocommerce-product-rating:before,
+.single-product .summary .woocommerce-product-rating:after {
   content: "";
   display: table;
 }
-.single-product .summary .rating-wrap:after {
+.single-product .summary .woocommerce-product-rating:after {
   clear: both;
 }
-.single-product .summary .rating-wrap a:before {
+.single-product .summary .woocommerce-product-rating a:before {
   font-family: "FontAwesome";
   font-weight: normal;
   font-style: normal;
@@ -2117,13 +2117,10 @@ ul.products li.product.featured .woocommerce_msrp {
   content: "\f179";
   content: "\f075";
 }
-.single-product .summary .rating-wrap .star-rating {
+.single-product .summary .woocommerce-product-rating .star-rating {
   float: right;
-}
-.single-product .summary .rating-wrap .review-count {
-  float: left;
-  line-height: 1;
-  margin-bottom: 0;
+  line-height: 1.6;
+  height: 1.6em;
 }
 .single-product .summary form.cart {
   padding: 1em;
@@ -2822,12 +2819,12 @@ table.cart .actions .checkout-button:hover {
   .layout-left-content .woocommerce-columns-5 ul.products,
   .layout-right-content .woocommerce-columns-5 ul.products {
     display: block;
-    width: 103.7037037037037%;
-    margin-left: -1.8518518518518516%;
-    margin-right: -1.8518518518518516%;
-    *width: 103.65162037037037%;
-    *margin-left: -1.903935185185185%;
-    *margin-right: -1.903935185185185%;
+    width: 103.7037037%;
+    margin-left: -1.85185185%;
+    margin-right: -1.85185185%;
+    *width: 103.65162037%;
+    *margin-left: -1.90393519%;
+    *margin-right: -1.90393519%;
     *zoom: 1;
   }
   .layout-left-content .woocommerce-columns-4 ul.products:after,
@@ -2867,12 +2864,12 @@ table.cart .actions .checkout-button:hover {
   }
   .layout-full .woocommerce-columns-4 ul.products {
     display: block;
-    width: 102.77777777777777%;
-    margin-left: -1.3888888888888888%;
-    margin-right: -1.3888888888888888%;
-    *width: 102.72569444444444%;
-    *margin-left: -1.440972222222222%;
-    *margin-right: -1.440972222222222%;
+    width: 102.77777778%;
+    margin-left: -1.38888889%;
+    margin-right: -1.38888889%;
+    *width: 102.72569444%;
+    *margin-left: -1.44097222%;
+    *margin-right: -1.44097222%;
     *zoom: 1;
   }
   .layout-full .woocommerce-columns-4 ul.products:after {
@@ -2896,12 +2893,12 @@ table.cart .actions .checkout-button:hover {
   .woocommerce-columns-3 ul.products li.product {
     display: inline;
     float: left;
-    width: 29.629629629629626%;
-    margin-left: 1.8518518518518516%;
-    margin-right: 1.8518518518518516%;
-    *width: 29.577546296296294%;
-    *margin-left: 1.7997685185185184%;
-    *margin-right: 1.7997685185185184%;
+    width: 29.62962963%;
+    margin-left: 1.85185185%;
+    margin-right: 1.85185185%;
+    *width: 29.5775463%;
+    *margin-left: 1.79976852%;
+    *margin-right: 1.79976852%;
   }
   .woocommerce-columns-4 ul.products li.product {
     width: 22.05%;
@@ -2959,12 +2956,12 @@ table.cart .actions .checkout-button:hover {
   }
   .layout-full ul.products {
     display: block;
-    width: 102.77777777777777%;
-    margin-left: -1.3888888888888888%;
-    margin-right: -1.3888888888888888%;
-    *width: 102.72569444444444%;
-    *margin-left: -1.440972222222222%;
-    *margin-right: -1.440972222222222%;
+    width: 102.77777778%;
+    margin-left: -1.38888889%;
+    margin-right: -1.38888889%;
+    *width: 102.72569444%;
+    *margin-left: -1.44097222%;
+    *margin-right: -1.44097222%;
     *zoom: 1;
   }
   .layout-full ul.products:after {
@@ -2985,32 +2982,32 @@ table.cart .actions .checkout-button:hover {
   .layout-full .woocommerce-columns-2 ul.products li.product {
     display: inline;
     float: left;
-    width: 47.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 47.170138888888886%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 47.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 47.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .layout-full .woocommerce-columns-3 ul.products li.product {
     display: inline;
     float: left;
-    width: 30.555555555555557%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 30.503472222222225%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 30.55555556%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 30.50347222%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .layout-full .woocommerce-columns-4 ul.products li.product {
     display: inline;
     float: left;
-    width: 22.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 22.17013888888889%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 22.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 22.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .layout-full .woocommerce-columns-4 ul.products li.product .rating-wrap {
     float: right;
@@ -3041,21 +3038,21 @@ table.cart .actions .checkout-button:hover {
   .home div.woocommerce-wrap {
     display: inline;
     float: left;
-    width: 97.22222222222221%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 97.17013888888889%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 97.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 97.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .home div.woocommerce-wrap ul.products {
     display: block;
-    width: 102.77777777777777%;
-    margin-left: -1.3888888888888888%;
-    margin-right: -1.3888888888888888%;
-    *width: 102.72569444444444%;
-    *margin-left: -1.440972222222222%;
-    *margin-right: -1.440972222222222%;
+    width: 102.77777778%;
+    margin-left: -1.38888889%;
+    margin-right: -1.38888889%;
+    *width: 102.72569444%;
+    *margin-left: -1.44097222%;
+    *margin-right: -1.44097222%;
     *zoom: 1;
   }
   .home div.woocommerce-wrap ul.products:after {
@@ -3076,22 +3073,22 @@ table.cart .actions .checkout-button:hover {
   .home div.woocommerce-wrap ul.products li.product {
     display: inline;
     float: left;
-    width: 22.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 22.17013888888889%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 22.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 22.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .home div.woocommerce-wrap ul.featured li.featured {
     display: inline;
     float: left;
-    width: 47.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 47.170138888888886%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 47.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 47.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
     *zoom: 1;
     -webkit-border-radius: 0.382em;
     border-radius: 0.382em;
@@ -3287,12 +3284,12 @@ table.cart .actions .checkout-button:hover {
   }
   .single-product #main > .product {
     display: block;
-    width: 103.7037037037037%;
-    margin-left: -1.8518518518518516%;
-    margin-right: -1.8518518518518516%;
-    *width: 103.65162037037037%;
-    *margin-left: -1.903935185185185%;
-    *margin-right: -1.903935185185185%;
+    width: 103.7037037%;
+    margin-left: -1.85185185%;
+    margin-right: -1.85185185%;
+    *width: 103.65162037%;
+    *margin-left: -1.90393519%;
+    *margin-right: -1.90393519%;
     *zoom: 1;
   }
   .single-product #main > .product:after {
@@ -3313,21 +3310,21 @@ table.cart .actions .checkout-button:hover {
   .single-product .product .images {
     display: inline;
     float: left;
-    width: 40.74074074074074%;
-    margin-left: 1.8518518518518516%;
-    margin-right: 1.8518518518518516%;
-    *width: 40.688657407407405%;
-    *margin-left: 1.7997685185185184%;
-    *margin-right: 1.7997685185185184%;
+    width: 40.74074074%;
+    margin-left: 1.85185185%;
+    margin-right: 1.85185185%;
+    *width: 40.68865741%;
+    *margin-left: 1.79976852%;
+    *margin-right: 1.79976852%;
   }
   .single-product .product .images .thumbnails {
     display: block;
-    width: 108.33333333333333%;
-    margin-left: -4.166666666666666%;
-    margin-right: -4.166666666666666%;
+    width: 108.33333333%;
+    margin-left: -4.16666667%;
+    margin-right: -4.16666667%;
     *width: 108.28125%;
-    *margin-left: -4.218749999999999%;
-    *margin-right: -4.218749999999999%;
+    *margin-left: -4.21875%;
+    *margin-right: -4.21875%;
     *zoom: 1;
   }
   .single-product .product .images .thumbnails:after {
@@ -3349,12 +3346,12 @@ table.cart .actions .checkout-button:hover {
     display: block;
     display: inline;
     float: left;
-    width: 16.666666666666664%;
-    margin-left: 4.166666666666666%;
-    margin-right: 4.166666666666666%;
-    *width: 16.614583333333332%;
-    *margin-left: 4.114583333333333%;
-    *margin-right: 4.114583333333333%;
+    width: 16.66666667%;
+    margin-left: 4.16666667%;
+    margin-right: 4.16666667%;
+    *width: 16.61458333%;
+    *margin-left: 4.11458333%;
+    *margin-right: 4.11458333%;
   }
   .single-product .product .product .images {
     margin-left: 0;
@@ -3367,12 +3364,12 @@ table.cart .actions .checkout-button:hover {
   .single-product .summary {
     display: inline;
     float: left;
-    width: 51.85185185185185%;
-    margin-left: 1.8518518518518516%;
-    margin-right: 1.8518518518518516%;
-    *width: 51.79976851851851%;
-    *margin-left: 1.7997685185185184%;
-    *margin-right: 1.7997685185185184%;
+    width: 51.85185185%;
+    margin-left: 1.85185185%;
+    margin-right: 1.85185185%;
+    *width: 51.79976852%;
+    *margin-left: 1.79976852%;
+    *margin-right: 1.79976852%;
     *zoom: 1;
   }
   .single-product .summary:after {
@@ -3479,23 +3476,23 @@ table.cart .actions .checkout-button:hover {
   .single-product #reviews {
     display: inline;
     float: left;
-    width: 96.29629629629629%;
-    margin-left: 1.8518518518518516%;
-    margin-right: 1.8518518518518516%;
-    *width: 96.24421296296296%;
-    *margin-left: 1.7997685185185184%;
-    *margin-right: 1.7997685185185184%;
+    width: 96.2962963%;
+    margin-left: 1.85185185%;
+    margin-right: 1.85185185%;
+    *width: 96.24421296%;
+    *margin-left: 1.79976852%;
+    *margin-right: 1.79976852%;
   }
   .single-product .related ul.products,
   .single-product .upsells ul.products,
   .single-product #reviews ul.products {
     display: block;
-    width: 103.7037037037037%;
-    margin-left: -1.8518518518518516%;
-    margin-right: -1.8518518518518516%;
-    *width: 103.65162037037037%;
-    *margin-left: -1.903935185185185%;
-    *margin-right: -1.903935185185185%;
+    width: 103.7037037%;
+    margin-left: -1.85185185%;
+    margin-right: -1.85185185%;
+    *width: 103.65162037%;
+    *margin-left: -1.90393519%;
+    *margin-right: -1.90393519%;
     *zoom: 1;
   }
   .single-product .related ul.products:after,
@@ -3526,21 +3523,21 @@ table.cart .actions .checkout-button:hover {
   .single-product #reviews ul.products li.product {
     display: inline;
     float: left;
-    width: 29.629629629629626%;
-    margin-left: 1.8518518518518516%;
-    margin-right: 1.8518518518518516%;
-    *width: 29.577546296296294%;
-    *margin-left: 1.7997685185185184%;
-    *margin-right: 1.7997685185185184%;
+    width: 29.62962963%;
+    margin-left: 1.85185185%;
+    margin-right: 1.85185185%;
+    *width: 29.5775463%;
+    *margin-left: 1.79976852%;
+    *margin-right: 1.79976852%;
   }
   .single-product.layout-full .product {
     display: block;
-    width: 102.77777777777777%;
-    margin-left: -1.3888888888888888%;
-    margin-right: -1.3888888888888888%;
-    *width: 102.72569444444444%;
-    *margin-left: -1.440972222222222%;
-    *margin-right: -1.440972222222222%;
+    width: 102.77777778%;
+    margin-left: -1.38888889%;
+    margin-right: -1.38888889%;
+    *width: 102.72569444%;
+    *margin-left: -1.44097222%;
+    *margin-right: -1.44097222%;
     *zoom: 1;
   }
   .single-product.layout-full .product:after {
@@ -3562,21 +3559,21 @@ table.cart .actions .checkout-button:hover {
   .single-product.layout-full .product .summary {
     display: inline;
     float: left;
-    width: 47.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 47.170138888888886%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 47.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 47.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   .single-product.layout-full .product .images .thumbnails {
     display: block;
-    width: 105.55555555555556%;
-    margin-left: -2.7777777777777777%;
-    margin-right: -2.7777777777777777%;
-    *width: 105.50347222222223%;
-    *margin-left: -2.829861111111111%;
-    *margin-right: -2.829861111111111%;
+    width: 105.55555556%;
+    margin-left: -2.77777778%;
+    margin-right: -2.77777778%;
+    *width: 105.50347222%;
+    *margin-left: -2.82986111%;
+    *margin-right: -2.82986111%;
     *zoom: 1;
   }
   .single-product.layout-full .product .images .thumbnails:after {
@@ -3597,22 +3594,22 @@ table.cart .actions .checkout-button:hover {
   .single-product.layout-full .product .images .thumbnails a {
     display: inline;
     float: left;
-    width: 11.11111111111111%;
-    margin-left: 2.7777777777777777%;
-    margin-right: 2.7777777777777777%;
-    *width: 11.059027777777777%;
-    *margin-left: 2.725694444444444%;
-    *margin-right: 2.725694444444444%;
+    width: 11.11111111%;
+    margin-left: 2.77777778%;
+    margin-right: 2.77777778%;
+    *width: 11.05902778%;
+    *margin-left: 2.72569444%;
+    *margin-right: 2.72569444%;
   }
   .single-product.layout-full .product .related ul.products,
   .single-product.layout-full .product .upsells ul.products {
     display: block;
-    width: 102.77777777777777%;
-    margin-left: -1.3888888888888888%;
-    margin-right: -1.3888888888888888%;
-    *width: 102.72569444444444%;
-    *margin-left: -1.440972222222222%;
-    *margin-right: -1.440972222222222%;
+    width: 102.77777778%;
+    margin-left: -1.38888889%;
+    margin-right: -1.38888889%;
+    *width: 102.72569444%;
+    *margin-left: -1.44097222%;
+    *margin-right: -1.44097222%;
     *zoom: 1;
   }
   .single-product.layout-full .product .related ul.products:after,
@@ -3638,12 +3635,12 @@ table.cart .actions .checkout-button:hover {
   .single-product.layout-full .product .upsells ul.products li.product {
     display: inline;
     float: left;
-    width: 22.22222222222222%;
-    margin-left: 1.3888888888888888%;
-    margin-right: 1.3888888888888888%;
-    *width: 22.17013888888889%;
-    *margin-left: 1.3368055555555556%;
-    *margin-right: 1.3368055555555556%;
+    width: 22.22222222%;
+    margin-left: 1.38888889%;
+    margin-right: 1.38888889%;
+    *width: 22.17013889%;
+    *margin-left: 1.33680556%;
+    *margin-right: 1.33680556%;
   }
   table.cart .product-remove,
   table.cart .product-thumbnail,

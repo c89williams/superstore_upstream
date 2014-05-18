@@ -1,5 +1,15 @@
 *** Superstore Changelog ***
 
+2014.05.09 - version 1.1.4
+ * Tweak - Single product rating uses schema compliant markup
+   includes/integrations/woocommerce/woocommerce.php
+   includes/integrations/woocommerce/css/woocommerce.less
+   includes/integrations/woocommerce/css/woocommerce.css
+
+2014.04.24 - version 1.1.3
+ * Fix - Blog Grid template layout fix
+   includes/theme-js.php
+
 2014.04.11 - version 1.1.2
  * Fix - Remove incorrect icon on loading message when infinite scroll is enabled.
    includes/integrations/woocommerce/woocommerce.less

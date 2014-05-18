@@ -35,9 +35,9 @@ if ( ! function_exists( 'woo_load_woocommerce_css' ) ) {
  */
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 32 );
 
 add_action( 'woocommerce_after_shop_loop_item', 'superstore_product_rating_overview', 9 );
-add_action( 'woocommerce_single_product_summary', 'superstore_single_product_rating_overview', 32 );
 
 if ( ! function_exists( 'superstore_product_rating_overview' ) ) {
 	function superstore_product_rating_overview() {
@@ -51,21 +51,6 @@ if ( ! function_exists( 'superstore_product_rating_overview' ) ) {
 						comments_number( '', __('1 review', 'woothemes'), __('% reviews', 'woothemes') );
 					echo '</span>';
 				echo '</a>';
-			echo '</div>';
-		}
-	}
-}
-
-if ( ! function_exists( 'superstore_single_product_rating_overview' ) ) {
-	function superstore_single_product_rating_overview() {
-		global $product;
-		$review_total = get_comments_number();
-		if ( $review_total > 0 && get_option( 'woocommerce_enable_review_rating' ) !== 'no' ) {
-			echo '<div class="rating-wrap">';
-				echo $product->get_rating_html();
-				echo '<span class="review-count"><a href="#reviews">';
-					comments_number( '', __('1 review', 'woothemes'), __('% reviews', 'woothemes') );
-				echo '</a></span>';
 			echo '</div>';
 		}
 	}

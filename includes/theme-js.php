@@ -14,7 +14,7 @@ if ( ! function_exists( 'woothemes_add_javascript' ) ) {
 		wp_register_script( 'flexslider', get_template_directory_uri() . '/includes/js/jquery.flexslider-min.js', array( 'jquery' ) );
 		wp_register_script( 'featured-slider', get_template_directory_uri() . '/includes/js/featured-slider.js', array( 'jquery' , 'flexslider' ) );
 		wp_register_script( 'infinite-scroll', get_template_directory_uri() . '/includes/js/jquery.infinitescroll.min.js', array( 'jquery' ) );
-		wp_register_script( 'masonry', get_template_directory_uri() . '/includes/js/jquery.masonry.min.js', array( 'jquery' ) );
+		wp_register_script( 'woo-masonry', get_template_directory_uri() . '/includes/js/jquery.masonry.min.js', array( 'jquery' ) );
 
 		wp_enqueue_script( 'third party', get_template_directory_uri() . '/includes/js/third-party.js', array( 'jquery' ) );
 		wp_enqueue_script( 'tiptip', get_template_directory_uri() . '/includes/js/jquery.tiptip.min.js', array( 'jquery' ) );
@@ -35,7 +35,7 @@ if ( ! function_exists( 'woothemes_add_javascript' ) ) {
 
 		// Load Masonry on the blog grid layout
 		if ( is_page_template( 'template-blog-grid.php' ) ) {
-			wp_enqueue_script( 'masonry' );
+			wp_enqueue_script( 'woo-masonry' );
 			add_action( 'wp_head', 'woo_fire_masonry' );
 		}
 
