@@ -1,5 +1,15 @@
 *** Superstore Changelog ***
 
+2014.07.11 - version 1.1.5
+ * Fix - Removed category exclude theme options which can cause issues with static homepages. Use pre_get_posts filter to replicate this functionality
+   includes/theme-functions.php
+   includes/theme-options.php
+ * Tweak - Product display in general search results
+   style.less
+   style.css
+   css/layout.less
+   css/layout.css
+
 2014.05.09 - version 1.1.4
  * Tweak - Single product rating uses schema compliant markup
    includes/integrations/woocommerce/woocommerce.php

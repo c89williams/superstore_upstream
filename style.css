@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.1.4
+Version: 1.1.5
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1547,12 +1547,14 @@ ul.nav li a {
   clear: both;
   margin-bottom: 1.618em;
 }
-.hentry {
+.hentry,
+.search-results .type-product {
   margin: 0 0 2.618em;
   *zoom: 1;
   /* 3.1 Images */
 }
-.hentry:after {
+.hentry:after,
+.search-results .type-product:after {
   content: "\0020";
   display: block;
   height: 0;
@@ -1560,24 +1562,31 @@ ul.nav li a {
   clear: both;
 }
 .hentry:before,
-.hentry:after {
+.search-results .type-product:before,
+.hentry:after,
+.search-results .type-product:after {
   content: "";
   display: table;
 }
-.hentry:after {
+.hentry:after,
+.search-results .type-product:after {
   clear: both;
 }
-.hentry .post-meta {
+.hentry .post-meta,
+.search-results .type-product .post-meta {
   display: none;
 }
-.hentry .post-more {
+.hentry .post-more,
+.search-results .type-product .post-more {
   clear: both;
 }
-.hentry p.tags {
+.hentry p.tags,
+.search-results .type-product p.tags {
   width: 100%;
   clear: both;
 }
-.hentry p.tags:before {
+.hentry p.tags:before,
+.search-results .type-product p.tags:before {
   font-family: "FontAwesome";
   font-weight: normal;
   font-style: normal;
@@ -1589,10 +1598,12 @@ ul.nav li a {
   content: "\f179";
   content: '\f02c';
 }
-.hentry .post-content img.woo-image {
+.hentry .post-content img.woo-image,
+.search-results .type-product .post-content img.woo-image {
   margin-bottom: 0;
 }
-.hentry .post-content > a img.woo-image {
+.hentry .post-content > a img.woo-image,
+.search-results .type-product .post-content > a img.woo-image {
   -webkit-border-bottom-left-radius: 0;
   -webkit-border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -1601,7 +1612,8 @@ ul.nav li a {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.hentry .post-content > a + .entry {
+.hentry .post-content > a + .entry,
+.search-results .type-product .post-content > a + .entry {
   -webkit-border-top-left-radius: 0;
   -webkit-border-top-right-radius: 0;
   border-top-left-radius: 0;
@@ -1611,7 +1623,9 @@ ul.nav li a {
   background-clip: padding-box;
 }
 .hentry .entry,
-.hentry #contactForm {
+.search-results .type-product .entry,
+.hentry #contactForm,
+.search-results .type-product #contactForm {
   background: #ffffff;
   -webkit-border-radius: 0.382em;
   border-radius: 0.382em;
@@ -1623,7 +1637,9 @@ ul.nav li a {
   clear: both;
 }
 .hentry .entry:after,
-.hentry #contactForm:after {
+.search-results .type-product .entry:after,
+.hentry #contactForm:after,
+.search-results .type-product #contactForm:after {
   content: "\0020";
   display: block;
   height: 0;
@@ -1631,34 +1647,50 @@ ul.nav li a {
   clear: both;
 }
 .hentry .entry:before,
+.search-results .type-product .entry:before,
 .hentry #contactForm:before,
+.search-results .type-product #contactForm:before,
 .hentry .entry:after,
-.hentry #contactForm:after {
+.search-results .type-product .entry:after,
+.hentry #contactForm:after,
+.search-results .type-product #contactForm:after {
   content: "";
   display: table;
 }
 .hentry .entry:after,
-.hentry #contactForm:after {
+.search-results .type-product .entry:after,
+.hentry #contactForm:after,
+.search-results .type-product #contactForm:after {
   clear: both;
 }
 .hentry .entry ul,
+.search-results .type-product .entry ul,
 .hentry #contactForm ul,
+.search-results .type-product #contactForm ul,
 .hentry .entry ol,
-.hentry #contactForm ol {
+.search-results .type-product .entry ol,
+.hentry #contactForm ol,
+.search-results .type-product #contactForm ol {
   margin-left: 1.618em;
 }
 .hentry .entry ul.products,
-.hentry #contactForm ul.products {
+.search-results .type-product .entry ul.products,
+.hentry #contactForm ul.products,
+.search-results .type-product #contactForm ul.products {
   margin-left: 0;
 }
 .hentry .entry ul.products img,
-.hentry #contactForm ul.products img {
+.search-results .type-product .entry ul.products img,
+.hentry #contactForm ul.products img,
+.search-results .type-product #contactForm ul.products img {
   background: none;
   border: 0;
   padding: 0;
 }
 .hentry .entry blockquote,
-.hentry #contactForm blockquote {
+.search-results .type-product .entry blockquote,
+.hentry #contactForm blockquote,
+.search-results .type-product #contactForm blockquote {
   position: relative;
   margin: 0 0 1.618em;
   padding: 0 0 0 2.618em;
@@ -1666,7 +1698,9 @@ ul.nav li a {
   font-style: italic;
 }
 .hentry .entry blockquote:before,
-.hentry #contactForm blockquote:before {
+.search-results .type-product .entry blockquote:before,
+.hentry #contactForm blockquote:before,
+.search-results .type-product #contactForm blockquote:before {
   content: open-quote;
   position: absolute;
   top: 0;
@@ -1677,14 +1711,18 @@ ul.nav li a {
   margin: 0;
   vertical-align: -0.4em;
 }
-.hentry .post.contact-form input[type="checkbox"] {
+.hentry .post.contact-form input[type="checkbox"],
+.search-results .type-product .post.contact-form input[type="checkbox"] {
   -webkit-appearance: checkbox;
 }
 .hentry .post.contact-form input[type="checkbox"]:before,
-.hentry .post.contact-form input[type="checkbox"]:checked:before {
+.search-results .type-product .post.contact-form input[type="checkbox"]:before,
+.hentry .post.contact-form input[type="checkbox"]:checked:before,
+.search-results .type-product .post.contact-form input[type="checkbox"]:checked:before {
   display: none;
 }
-.hentry .woo-image {
+.hentry .woo-image,
+.search-results .type-product .woo-image {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;
@@ -1700,7 +1738,9 @@ ul.nav li a {
   background-clip: padding-box;
 }
 .hentry img,
-.hentry img.thumbnail {
+.search-results .type-product img,
+.hentry img.thumbnail,
+.search-results .type-product img.thumbnail {
   padding: .327em;
   border: 1px solid #e7e7e7;
   background: #fff;
@@ -1714,40 +1754,49 @@ ul.nav li a {
   /* Opera/IE 8+ */
 }
 .hentry img:hover,
-.hentry img.thumbnail:hover {
+.search-results .type-product img:hover,
+.hentry img.thumbnail:hover,
+.search-results .type-product img.thumbnail:hover {
   border-color: #cdcdcd;
 }
-.hentry img.wp-smiley {
+.hentry img.wp-smiley,
+.search-results .type-product img.wp-smiley {
   padding: 0;
   border: 0;
 }
-.hentry .alignleft {
+.hentry .alignleft,
+.search-results .type-product .alignleft {
   float: left;
   margin: 0 1.618em 1em 0;
 }
-.hentry .alignright {
+.hentry .alignright,
+.search-results .type-product .alignright {
   float: right;
   margin: 0 0 1em 1.618em;
 }
-.hentry .aligncenter {
+.hentry .aligncenter,
+.search-results .type-product .aligncenter {
   display: block;
   text-align: center;
   margin: 0 auto 1.618em;
 }
-.hentry .wp-caption {
+.hentry .wp-caption,
+.search-results .type-product .wp-caption {
   padding: .077em;
   text-align: center;
   background: #f8f8f8;
   border: 1px solid #e7e7e7;
   max-width: 100%;
 }
-.hentry .wp-caption img {
+.hentry .wp-caption img,
+.search-results .type-product .wp-caption img {
   margin: 0;
   padding: .327em 0;
   background: none;
   border: 0;
 }
-.hentry .wp-caption-text {
+.hentry .wp-caption-text,
+.search-results .type-product .wp-caption-text {
   margin: 0;
   padding: 0;
   text-align: center;

@@ -5,8 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 TABLE OF CONTENTS
 
-- Exclude categories from displaying on the "Blog" page template.
-- Exclude categories from displaying on the homepage.
 - Register WP Menus
 - Breadcrumb display
 - Page navigation
@@ -25,65 +23,6 @@ TABLE OF CONTENTS
 - Contact list
 
 -----------------------------------------------------------------------------------*/
-
-/*-----------------------------------------------------------------------------------*/
-/* Exclude categories from displaying on the "Blog" page template.
-/*-----------------------------------------------------------------------------------*/
-
-// Exclude categories on the "Blog" page template.
-add_filter( 'woo_blog_template_query_args', 'woo_exclude_categories_blogtemplate' );
-
-function woo_exclude_categories_blogtemplate ( $args ) {
-
-	if ( ! function_exists( 'woo_prepare_category_ids_from_option' ) ) { return $args; }
-
-	$excluded_cats = array();
-
-	// Process the category data and convert all categories to IDs.
-	$excluded_cats = woo_prepare_category_ids_from_option( 'woo_exclude_cats_blog' );
-
-	// Homepage logic.
-	if ( count( $excluded_cats ) > 0 ) {
-
-		// Setup the categories as a string, because "category__not_in" doesn't seem to work
-		// when using query_posts().
-
-		foreach ( $excluded_cats as $k => $v ) { $excluded_cats[$k] = '-' . $v; }
-		$cats = join( ',', $excluded_cats );
-
-		$args['cat'] = $cats;
-	}
-
-	return $args;
-
-} // End woo_exclude_categories_blogtemplate()
-
-/*-----------------------------------------------------------------------------------*/
-/* Exclude categories from displaying on the homepage.
-/*-----------------------------------------------------------------------------------*/
-
-// Exclude categories on the homepage.
-add_filter( 'pre_get_posts', 'woo_exclude_categories_homepage' );
-
-function woo_exclude_categories_homepage ( $query ) {
-
-	if ( ! function_exists( 'woo_prepare_category_ids_from_option' ) ) { return $query; }
-
-	$excluded_cats = array();
-
-	// Process the category data and convert all categories to IDs.
-	$excluded_cats = woo_prepare_category_ids_from_option( 'woo_exclude_cats_home' );
-
-	// Homepage logic.
-	if ( is_home() && ( count( $excluded_cats ) > 0 ) ) {
-		$query->set( 'category__not_in', $excluded_cats );
-	}
-
-	$query->parse_query();
-
-	return $query;
-
-} // End woo_exclude_categories_homepage()
 
 /*-----------------------------------------------------------------------------------*/
 /* Register WP Menus */

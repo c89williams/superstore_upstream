@@ -9,7 +9,7 @@ $themeslug = 'superstore';
 
 // STANDARD VARIABLES. DO NOT TOUCH!
 $shortname = 'woo';
-$manualurl = 'http://www.woothemes.com/support/theme-documentation/'.$themeslug.'/';
+$manualurl = 'http://docs.woothemes.com/document/'.$themeslug.'/';
 
 //Stylesheets Reader
 $alt_stylesheet_path = get_template_directory() . '/styles/';
@@ -395,18 +395,6 @@ $options[] = array( 'name' => __( 'Main Layout', 'woothemes' ),
     					'layout-left-content' => $url . '2cl.png',
     					'layout-right-content' => $url . '2cr.png' )
     				);
-
-$options[] = array( 'name' => __( 'Category Exclude - Homepage', 'woothemes' ),
-    				'desc' => __( 'Specify a comma separated list of category IDs or slugs that you\'d like to exclude from your homepage (eg: uncategorized).', 'woothemes' ),
-    				'id' => $shortname . '_exclude_cats_home',
-    				'std' => '',
-    				'type' => 'text' );
-
-$options[] = array( 'name' => __( 'Category Exclude - Blog Page Template', 'woothemes' ),
-    				'desc' => __( 'Specify a comma separated list of category IDs or slugs that you\'d like to exclude from your \'Blog\' page template (eg: uncategorized).', 'woothemes' ),
-    				'id' => $shortname . '_exclude_cats_blog',
-    				'std' => '',
-    				'type' => 'text' );
 
 $options[] = array( 'name' => __( 'Business Template', 'woothemes' ),
                     'type' => 'heading',
