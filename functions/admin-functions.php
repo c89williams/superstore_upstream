@@ -1599,10 +1599,10 @@ function wf_get_system_fonts_test_cases () {
 			'Palatino, &quot;Palatino Linotype&quot;, serif' => 'Palatino',
 			'&quot;Helvetica Neue&quot;, Helvetica, sans-serif' => 'Helvetica Neue',
 			'Calibri, Candara, Segoe, Optima, sans-serif' => 'Calibri',
-			'&quot;Myriad Pro&quot;, Myriad, sans-serif' => 'Myriad',
+			'&quot;Myriad Pro&quot;, Myriad, sans-serif' => 'Myriad Pro',
 			'&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, &quot;Lucida Sans&quot;, sans-serif' => 'Lucida Grande',
 			'&quot;Arial Black&quot;, sans-serif' => 'Arial Black',
-			'&quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, Calibri, sans-serif' => 'Gill',
+			'&quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, Calibri, sans-serif' => 'Gill Sans',
 			'Geneva, Tahoma, Verdana, sans-serif' => 'Geneva',
 			'Impact, Charcoal, sans-serif' => 'Impact',
 			'Courier, &quot;Courier New&quot;, monospace' => 'Courier',
@@ -2741,9 +2741,9 @@ function woo_breadcrumbs( $args = array() ) {
 				foreach ( $sorted as $k => $v ) {
 					$count++;
 					if ( isset( $args['show_only_first_taxonomy_tree'] ) && true == (bool)$args['show_only_first_taxonomy_tree'] && 1 < $count ) continue; // Display only the first match.
-					$parents = woo_get_term_parents( $v->term_id, $args["singular_{$post_type}_taxonomy"], true, ', ', $v->name, array() );
+					$parents = woo_get_term_parents( $v->term_id, $args["singular_{$post_type}_taxonomy"], true, '|-|', $v->name, array() );
 					if ( $parents != '' && ! is_wp_error( $parents ) ) {
-						$parents_arr = explode( ', ', $parents );
+						$parents_arr = explode( '|-|', $parents );
 						foreach ( $parents_arr as $p ) {
 							if ( $p != '' && ! in_array( $p, $links ) ) { $links[] = $p; }
 						}

@@ -789,7 +789,7 @@ class WF_Fields {
 		$html .= '</select>' . "\n";
 
 		/* Weights */
-		$font_weights = (array) apply_filters( 'wf_fields_typography_font_weights', array( '300' => __( 'Thin', 'woothemes' ), '300 italic' => __( 'Thin Italic', 'woothemes' ), 'normal' => __( 'Normal', 'woothemes' ), 'italic' => __( 'Italic', 'woothemes' ), 'bold' => __( 'Bold', 'woothemes' ), 'bolditalic' => __( 'Bold/Italic', 'woothemes' ) ) );
+		$font_weights = (array) apply_filters( 'wf_fields_typography_font_weights', array( '300' => __( 'Thin', 'woothemes' ), '300 italic' => __( 'Thin Italic', 'woothemes' ), 'normal' => __( 'Normal', 'woothemes' ), 'italic' => __( 'Italic', 'woothemes' ), 'bold' => __( 'Bold', 'woothemes' ), 'bold italic' => __( 'Bold/Italic', 'woothemes' ) ) );
 
 		if ( 0 < count( $font_weights ) ) {
 			$html .= '<select class="woo-typography woo-typography-font-weight woo-typography-style" name="'. esc_attr( $key . '[style]' ) . '" id="'. esc_attr( $key . '_style' ) . '">' . "\n";
@@ -1583,6 +1583,9 @@ class WF_Fields {
 
 		$current_section = '';
 		foreach ( $data as $k => $v ) {
+			$field_counter = 0;
+			$field_counter++;
+
 			if ( in_array( $v['type'], array( 'heading', 'subheading' ) ) ) {
 				$current_section = $this->_generate_section_token( $v['name'] );
 				continue; // Ignore headings and sub-headings.
@@ -1613,7 +1616,19 @@ class WF_Fields {
 			// Add the field to the fields property.
 			$v['section'] = $current_section;
 
-			$key = $v['id'];
+			$key = '';
+			if ( isset( $v['id'] ) ) {
+				$key = $v['id'];
+			} else {
+				if ( isset( $v['name'] ) ) {
+					$key = sanitize_title_with_dashes( $v['name'] );
+				}
+			}
+
+			// Make sure we always have a key.
+			if ( '' == $key ) {
+				$key = 'field-' . $field_counter;
+			}
 
 			// Avoid duplicate keys by creating an adjusted key.
 			if ( isset( $this->_fields[$key] ) ) {

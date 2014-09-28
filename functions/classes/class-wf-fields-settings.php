@@ -38,12 +38,22 @@ class WF_Fields_Settings extends WF_Fields {
 		$allowed['embed'] = array( 'src' => true, 'width' => true, 'height' => true, 'id' => true, 'class' => true, 'name' => true );
 
 		// Allow script tags in the Google Analytics field.
-		if ( is_array( $k ) && isset( $k['id'] ) && 'woo_google_analytics' == $k['id'] ) {
+		if ( is_array( $k ) && isset( $k['id'] ) && in_array( $k['id'], $this->get_script_supported_fields() ) ) {
 			$allowed['script'] = array( 'type' => true, 'id' => true, 'class' => true );
 		}
 
 		return wp_kses( $v, $allowed );
 	} // End validate_field_textarea()
+
+	/**
+	 * Return an array of fields which are allowed to support <script> tags.
+	 * @access  public
+	 * @since   6.0.4
+	 * @return  void
+	 */
+	public function get_script_supported_fields () {
+		return (array)apply_filters( 'wf_get_script_supported_fields', array( 'woo_ad_top_adsense', 'woo_google_analytics' ) );
+	} // End get_script_supported_fields()
 
 	/**
 	 * Initialise the tabs.

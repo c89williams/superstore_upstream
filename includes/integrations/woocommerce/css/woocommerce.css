@@ -1408,6 +1408,7 @@ span.onsale:after {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: 0;
+  -moz-appearance: textfield;
 }
 .quantity .plus,
 .quantity .minus {
@@ -2910,7 +2911,7 @@ table.cart .actions .checkout-button:hover {
     text-align: left;
   }
   .woocommerce-columns-5 ul.products li.product {
-    width: 17.21%;
+    width: 17.20%;
     margin-left: 1.4%;
     margin-right: 1.4%;
   }

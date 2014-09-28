@@ -1,5 +1,13 @@
 *** Superstore Changelog ***
 
+2014.07.11 - version 1.1.6
+* Fix - Allow for all new TLD's in the contact email form.
+  template-contact.php
+
+* Fix - 5 column product layout
+  includes/integrations/woocommerce/css/woocommerce.less
+  includes/integrations/woocommerce/css/woocommerce.css
+
 2014.07.11 - version 1.1.5
  * Fix - Removed category exclude theme options which can cause issues with static homepages. Use pre_get_posts filter to replicate this functionality
    includes/theme-functions.php

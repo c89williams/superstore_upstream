@@ -307,17 +307,16 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'superstore_custom_cart_butt
 function superstore_custom_cart_button_text( $text, $product ) {
 
     // by default set the text to Add
-    $result = 'Add';
+    $result = __('Add', 'woothemes');
 
     // if the text is 'Read More' the product is most likely out of stock so 'Add' doesn't make much sense. Let's replace it with Info since space is tight
     if ( 'Read More' == $text ) {
-        $result = 'Info';
+		$result = __('Info', 'woothemes');
     }
 
     // return the result
-    return __( $result, 'woothemes' );
+    return $result;
 }
-
 
 /**
  * Layout
