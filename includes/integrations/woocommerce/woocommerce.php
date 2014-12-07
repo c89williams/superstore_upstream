@@ -41,19 +41,19 @@ add_action( 'woocommerce_after_shop_loop_item', 'superstore_product_rating_overv
 
 if ( ! function_exists( 'superstore_product_rating_overview' ) ) {
 	function superstore_product_rating_overview() {
-		global $product;
-		$review_total = get_comments_number();
-		if ( $review_total > 0 && get_option( 'woocommerce_enable_review_rating' ) !== 'no' ) {
-			echo '<div class="rating-wrap">';
-				echo '<a href="' . get_permalink() . '#reviews">';
-					echo $product->get_rating_html();
-					echo '<span class="review-count">';
-						comments_number( '', __('1 review', 'woothemes'), __('% reviews', 'woothemes') );
-					echo '</span>';
-				echo '</a>';
-			echo '</div>';
-		}
-	}
+        global $product;
+        $review_total = $product->get_rating_count();
+        if ( $review_total > 0 && get_option( 'woocommerce_enable_review_rating' ) !== 'no' ) {
+            echo '<div class="rating-wrap">';
+                echo '<a href="' . get_permalink() . '#reviews">';
+                    echo $product->get_rating_html();
+                    echo '<span class="review-count">';
+                        printf( _n( '%s review', '%s reviews', $review_total, 'woocommerce' ), '<span itemprop="ratingCount" class="count">' . $review_total . '</span>' );
+                    echo '</span>';
+                echo '</a>';
+            echo '</div>';
+        }
+    }
 }
 
 /**

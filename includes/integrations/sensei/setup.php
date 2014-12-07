@@ -6,6 +6,12 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Declare support
+ * Decares this themes compatibility with Sensei.
+ */
+add_action( 'after_setup_theme', 'woo_sensei_support' );
+
+/**
  * Styles
  * Disable stock sensei css and enqueue our own.
  */

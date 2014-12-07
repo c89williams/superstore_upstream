@@ -1,5 +1,18 @@
 *** Superstore Changelog ***
 
+2014.12.05 - version 1.1.8
+* Fix - Conflicting version number in changelog / style.css
+  style.less
+  style.css
+
+2014.11.27 - version 1.1.7
+* New - Declares Sensei support
+  includes/integrations/sensei/functions.php
+  includes/integrations/sensei/setup.php
+
+* Fix - Fixes issue with different product reviews count on product archives than single product pages
+  includes/integrations/woocommerce/woocommerce.php
+
 2014.07.11 - version 1.1.6
 * Fix - Allow for all new TLD's in the contact email form.
   template-contact.php

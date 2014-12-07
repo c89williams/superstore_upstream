@@ -3,6 +3,16 @@
  * Sensei Logic
  */
 
+if ( ! function_exists( 'woo_sensei_support' ) ) {
+	/**
+	* Compatibility
+	* Declare Sensei support
+	*/
+	function woo_sensei_support() {
+		add_theme_support( 'sensei' );
+	}
+}
+
 if ( ! function_exists( 'woo_sensei_css' ) ) {
 	/**
 	 * Sensei css
