@@ -871,7 +871,8 @@ body:after {
     margin-bottom: 0;
   }
   #header .header-top .row .widget_product_search #searchform .s,
-  #header .header-top .row .widget_product_search #searchform #s {
+  #header .header-top .row .widget_product_search #searchform #s,
+  #header .header-top .row .widget_product_search .search-field {
     background: rgba(0, 0, 0, 0.025);
   }
   #header .header-top .row .account {
@@ -1713,6 +1714,7 @@ body:after {
   .post .entry,
   .type-page .entry,
   #comments li.comment .comment_container .comment-text,
+  #reviews li.review .comment_container .comment-text,
   .page .entry,
   .page #contactForm,
   #respond,

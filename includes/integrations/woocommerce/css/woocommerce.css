@@ -2401,6 +2401,11 @@ table.cart .actions .checkout-button {
 table.cart .actions .checkout-button:hover {
   background: #e26213;
 }
+.wc-proceed-to-checkout .button {
+  display: block;
+  text-align: center;
+  font-size: 1.387em;
+}
 .checkout {
   margin-bottom: 0;
 }
@@ -2457,6 +2462,7 @@ table.cart .actions .checkout-button:hover {
   float: right;
   border: 0;
   padding: 0;
+  max-height: 1.618em;
 }
 #payment .payment_methods li:last-child {
   padding-bottom: 0;

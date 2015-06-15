@@ -20,7 +20,7 @@ if ( post_password_required() ) { ?>
 	<p class="nocomments"><?php _e( 'This post is password protected. Enter the password to view comments.', 'woothemes' ); ?></p>
 <?php return; } ?>
 
-<?php $comments_by_type = &separate_comments( $comments ); ?>
+<?php $comments_by_type = separate_comments( $comments ); ?>
 
 <!-- You can start editing here. -->
 

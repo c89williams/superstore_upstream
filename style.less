@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.1.8
+Version: 1.2.2
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1139,13 +1139,14 @@ ul.nav { // Styles applied to all instances of navigation
 
 /* 4.2 Specific Widgets */
 /* SEARCH FORM */
-#searchform  {
+#searchform,
+.woocommerce-product-search  {
 	width: 100%;
 	.borderbox();
 	position: relative;
 	border:2px solid @border_main;
 	.border_radius;
-	.s, #s {
+	.s, #s, .search-field {
 		padding:.78em 2.618em .78em 1.387em;
 		width:100%;
 		.borderbox();
@@ -1153,8 +1154,11 @@ ul.nav { // Styles applied to all instances of navigation
 		border:0;
 		background: none;
 		color: @color_body;
+		font-size: inherit;
+		line-height: 1.618;
+		-webkit-appearance: none;
 	}
-	.search-submit, #searchsubmit {
+	.search-submit, #searchsubmit, input[type=submit] {
 		position: absolute;
 		top:5%;
 		right:.618em;
@@ -1176,7 +1180,7 @@ ul.nav { // Styles applied to all instances of navigation
 		text-indent: -99em;
 		&:hover {
 			.opacity(1);
-			background-color: none;
+			background-color: transparent;
 			-webkit-animation:none;
 		}
 	}
@@ -1481,14 +1485,16 @@ ul.nav { // Styles applied to all instances of navigation
 
 /* 5.1 Comments */
 
-#comments {
+#comments,
+#reviews {
 	ol.commentlist, ul.children {
 		margin-left:0;
 		clear:both;
 		list-style: none;
 		margin-bottom:0;
 	}
-	li.comment {
+	li.comment,
+	li.review {
 		overflow-x: hidden;
 		.comment_container {
 			.row(9);
@@ -1646,7 +1652,10 @@ ul.nav { // Styles applied to all instances of navigation
 			float: right;
 			font-size:1.618em;
 		}
-		li.comment {
+		li.review {
+			overflow: hidden;
+			zoom: 1;
+
 			.star-rating {
 				font-size:1em;
 			}

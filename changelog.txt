@@ -1,5 +1,20 @@
 *** Superstore Changelog ***
 
+2015.06.04 - version 1.2.2
+ * includes/js/jquery.prettyPhoto.js - Updated prettyPhoto to version 3.1.6.
+
+2015.02.17 - version 1.2.1
+* Fix - Fixes display issue with the Header Product Search Box in Safari
+  style.less
+  style.css
+
+2015.01.21 - version 1.2.0
+* New - WooCommerce 2.3 prep
+  includes/integrations/woocommerce/woocommerce.php
+
+* Fix - Strict standards warning
+  comments.php
+
 2014.12.05 - version 1.1.8
 * Fix - Conflicting version number in changelog / style.css
   style.less

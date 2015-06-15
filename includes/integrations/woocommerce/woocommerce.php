@@ -626,7 +626,11 @@ if ( ! function_exists( 'wooframework_layout_body_class' ) ) {
  * Segments of code which should not be protected from caching and able to update
  * without reloading the page.
  */
-add_filter( 'add_to_cart_fragments', 'header_add_to_cart_fragment' );
+if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '2.3', '>=' ) ) {
+	add_filter( 'woocommerce_add_to_cart_fragments', 'header_add_to_cart_fragment' );
+} else {
+	add_filter( 'add_to_cart_fragments', 'header_add_to_cart_fragment' );
+}
 
 function header_add_to_cart_fragment( $fragments ) {
 	global $woocommerce;

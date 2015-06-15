@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.1.8
+Version: 1.2.2
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -2097,7 +2097,8 @@ ul.nav li a {
 }
 /* 4.2 Specific Widgets */
 /* SEARCH FORM */
-#searchform {
+#searchform,
+.woocommerce-product-search {
   width: 100%;
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
@@ -2114,7 +2115,11 @@ ul.nav li a {
   background-clip: padding-box;
 }
 #searchform .s,
-#searchform #s {
+.woocommerce-product-search .s,
+#searchform #s,
+.woocommerce-product-search #s,
+#searchform .search-field,
+.woocommerce-product-search .search-field {
   padding: .78em 2.618em .78em 1.387em;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -2127,9 +2132,16 @@ ul.nav li a {
   border: 0;
   background: none;
   color: #364245;
+  font-size: inherit;
+  line-height: 1.618;
+  -webkit-appearance: none;
 }
 #searchform .search-submit,
-#searchform #searchsubmit {
+.woocommerce-product-search .search-submit,
+#searchform #searchsubmit,
+.woocommerce-product-search #searchsubmit,
+#searchform input[type=submit],
+.woocommerce-product-search input[type=submit] {
   position: absolute;
   top: 5%;
   right: .618em;
@@ -2152,18 +2164,26 @@ ul.nav li a {
   text-indent: -99em;
 }
 #searchform .search-submit:hover,
-#searchform #searchsubmit:hover {
+.woocommerce-product-search .search-submit:hover,
+#searchform #searchsubmit:hover,
+.woocommerce-product-search #searchsubmit:hover,
+#searchform input[type=submit]:hover,
+.woocommerce-product-search input[type=submit]:hover {
   opacity: 1;
   filter: alpha(opacity=@opacity * 100);
-  background-color: none;
+  background-color: transparent;
   -webkit-animation: none;
 }
 #searchform:hover,
+.woocommerce-product-search:hover,
 #searchform:focus,
-#searchform:active {
+.woocommerce-product-search:focus,
+#searchform:active,
+.woocommerce-product-search:active {
   border-color: #2ab6d6;
 }
-#searchform label {
+#searchform label,
+.woocommerce-product-search label {
   display: none;
 }
 /* FLICKR */
@@ -2604,16 +2624,24 @@ ul.nav li a {
 /*-------------------------------------------------------------------------------------------*/
 /* 5.1 Comments */
 #comments ol.commentlist,
-#comments ul.children {
+#reviews ol.commentlist,
+#comments ul.children,
+#reviews ul.children {
   margin-left: 0;
   clear: both;
   list-style: none;
   margin-bottom: 0;
 }
-#comments li.comment {
+#comments li.comment,
+#reviews li.comment,
+#comments li.review,
+#reviews li.review {
   overflow-x: hidden;
 }
-#comments li.comment .comment_container {
+#comments li.comment .comment_container,
+#reviews li.comment .comment_container,
+#comments li.review .comment_container,
+#reviews li.review .comment_container {
   display: block;
   width: 103.7037037%;
   margin-left: -1.85185185%;
@@ -2624,7 +2652,10 @@ ul.nav li a {
   margin-bottom: 1.618em;
   *zoom: 1;
 }
-#comments li.comment .comment_container:after {
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   content: "\0020";
   display: block;
   height: 0;
@@ -2632,14 +2663,26 @@ ul.nav li a {
   clear: both;
 }
 #comments li.comment .comment_container:before,
-#comments li.comment .comment_container:after {
+#reviews li.comment .comment_container:before,
+#comments li.review .comment_container:before,
+#reviews li.review .comment_container:before,
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   content: "";
   display: table;
 }
-#comments li.comment .comment_container:after {
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   clear: both;
 }
-#comments li.comment .comment_container:after {
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   content: "\0020";
   display: block;
   height: 0;
@@ -2647,14 +2690,26 @@ ul.nav li a {
   clear: both;
 }
 #comments li.comment .comment_container:before,
-#comments li.comment .comment_container:after {
+#reviews li.comment .comment_container:before,
+#comments li.review .comment_container:before,
+#reviews li.review .comment_container:before,
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   content: "";
   display: table;
 }
-#comments li.comment .comment_container:after {
+#comments li.comment .comment_container:after,
+#reviews li.comment .comment_container:after,
+#comments li.review .comment_container:after,
+#reviews li.review .comment_container:after {
   clear: both;
 }
-#comments li.comment .comment_container .avatar {
+#comments li.comment .comment_container .avatar,
+#reviews li.comment .comment_container .avatar,
+#comments li.review .comment_container .avatar,
+#reviews li.review .comment_container .avatar {
   -webkit-border-radius: 0.382em;
   border-radius: 0.382em;
   -moz-background-clip: padding;
@@ -2670,7 +2725,10 @@ ul.nav li a {
   *margin-right: 1.79976852%;
   height: auto;
 }
-#comments li.comment .comment_container .avatar img {
+#comments li.comment .comment_container .avatar img,
+#reviews li.comment .comment_container .avatar img,
+#comments li.review .comment_container .avatar img,
+#reviews li.review .comment_container .avatar img {
   width: 100%;
   height: auto;
   margin: 0;
@@ -2680,7 +2738,10 @@ ul.nav li a {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-#comments li.comment .comment_container .comment-text {
+#comments li.comment .comment_container .comment-text,
+#reviews li.comment .comment_container .comment-text,
+#comments li.review .comment_container .comment-text,
+#reviews li.review .comment_container .comment-text {
   display: inline;
   float: left;
   width: 74.07407407%;
@@ -2704,10 +2765,16 @@ ul.nav li a {
   padding: 1em;
   position: relative;
 }
-#comments li.comment .comment_container .comment-text p:last-child {
+#comments li.comment .comment_container .comment-text p:last-child,
+#reviews li.comment .comment_container .comment-text p:last-child,
+#comments li.review .comment_container .comment-text p:last-child,
+#reviews li.review .comment_container .comment-text p:last-child {
   margin-bottom: 0;
 }
-#comments li.comment .comment_container .comment-text:after {
+#comments li.comment .comment_container .comment-text:after,
+#reviews li.comment .comment_container .comment-text:after,
+#comments li.review .comment_container .comment-text:after,
+#reviews li.review .comment_container .comment-text:after {
   content: "";
   display: block;
   border: 1em solid #ffffff;
@@ -2716,11 +2783,17 @@ ul.nav li a {
   top: 1em;
   right: -1.95em;
 }
-#comments li.comment .comment_container .comment-head {
+#comments li.comment .comment_container .comment-head,
+#reviews li.comment .comment_container .comment-head,
+#comments li.review .comment_container .comment-head,
+#reviews li.review .comment_container .comment-head {
   margin-bottom: 1em;
   color: #697578;
 }
-#comments li.comment .comment_container .comment-head .name:before {
+#comments li.comment .comment_container .comment-head .name:before,
+#reviews li.comment .comment_container .comment-head .name:before,
+#comments li.review .comment_container .comment-head .name:before,
+#reviews li.review .comment_container .comment-head .name:before {
   font-family: "FontAwesome";
   font-weight: normal;
   font-style: normal;
@@ -2732,10 +2805,16 @@ ul.nav li a {
   content: "\f179";
   content: "\f007";
 }
-#comments li.comment ul.children li.comment .comment_container {
+#comments li.comment ul.children li.comment .comment_container,
+#reviews li.comment ul.children li.comment .comment_container,
+#comments li.review ul.children li.comment .comment_container,
+#reviews li.review ul.children li.comment .comment_container {
   margin-left: 9.72222222%;
 }
-#comments li.comment ul.children li.comment .comment_container .avatar {
+#comments li.comment ul.children li.comment .comment_container .avatar,
+#reviews li.comment ul.children li.comment .comment_container .avatar,
+#comments li.review ul.children li.comment .comment_container .avatar,
+#reviews li.review ul.children li.comment .comment_container .avatar {
   display: inline;
   float: left;
   width: 7.40740741%;
@@ -2745,12 +2824,18 @@ ul.nav li a {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
 }
-#comments li.comment ul.children li.comment .comment_container .avatar img {
+#comments li.comment ul.children li.comment .comment_container .avatar img,
+#reviews li.comment ul.children li.comment .comment_container .avatar img,
+#comments li.review ul.children li.comment .comment_container .avatar img,
+#reviews li.review ul.children li.comment .comment_container .avatar img {
   width: 100%;
   height: auto;
   margin: 0;
 }
-#comments li.comment ul.children li.comment .comment_container .comment-text {
+#comments li.comment ul.children li.comment .comment_container .comment-text,
+#reviews li.comment ul.children li.comment .comment_container .comment-text,
+#comments li.review ul.children li.comment .comment_container .comment-text,
+#reviews li.review ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
   width: 62.96296296%;
@@ -2760,10 +2845,16 @@ ul.nav li a {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
 }
-#comments li.comment ul.children li.comment ul.children li.comment .comment_container {
+#comments li.comment ul.children li.comment ul.children li.comment .comment_container,
+#reviews li.comment ul.children li.comment ul.children li.comment .comment_container,
+#comments li.review ul.children li.comment ul.children li.comment .comment_container,
+#reviews li.review ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 21.055556%;
 }
-#comments li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
+#comments li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#reviews li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#comments li.review ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#reviews li.review ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
   width: 51.85185185%;
@@ -2773,10 +2864,16 @@ ul.nav li a {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
 }
-#comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container {
+#comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container,
+#reviews li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container,
+#comments li.review ul.children li.comment ul.children li.comment ul.children li.comment .comment_container,
+#reviews li.review ul.children li.comment ul.children li.comment ul.children li.comment .comment_container {
   margin-left: 32.6%;
 }
-#comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
+#comments li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#reviews li.comment ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#comments li.review ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text,
+#reviews li.review ul.children li.comment ul.children li.comment ul.children li.comment .comment_container .comment-text {
   display: inline;
   float: left;
   width: 40.74074074%;
@@ -2899,10 +2996,14 @@ ul.nav li a {
   float: right;
   font-size: 1.618em;
 }
-#reviews #comments li.comment .star-rating {
+#reviews #comments li.review {
+  overflow: hidden;
+  zoom: 1;
+}
+#reviews #comments li.review .star-rating {
   font-size: 1em;
 }
-#reviews #comments li.comment .comment_container .avatar {
+#reviews #comments li.review .comment_container .avatar {
   display: inline;
   float: left;
   width: 7.40740741%;
@@ -2912,7 +3013,7 @@ ul.nav li a {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
 }
-#reviews #comments li.comment .comment_container .comment-text {
+#reviews #comments li.review .comment_container .comment-text {
   display: inline;
   float: left;
   width: 85.18518519%;
@@ -2922,15 +3023,15 @@ ul.nav li a {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
 }
-#reviews #comments li.comment .comment_container .comment-text:after {
+#reviews #comments li.review .comment_container .comment-text:after {
   border-color: transparent #ffffff transparent transparent;
   left: -1.95em;
   right: auto;
 }
-#reviews #comments li.comment .comment_container .verified {
+#reviews #comments li.review .comment_container .verified {
   font-style: normal;
 }
-#reviews #comments li.comment .comment_container .verified:before {
+#reviews #comments li.review .comment_container .verified:before {
   font-family: "FontAwesome";
   font-weight: normal;
   font-style: normal;
@@ -2944,7 +3045,7 @@ ul.nav li a {
   color: #89b93f;
   margin-left: .382em;
 }
-#reviews #comments li.comment #respond {
+#reviews #comments li.review #respond {
   padding: 0;
 }
 #reviews p.add_review {
