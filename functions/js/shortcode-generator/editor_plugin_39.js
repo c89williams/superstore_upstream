@@ -45,7 +45,7 @@
                	// Typography menu.
                 {text: 'Typography', menu: [
                 	{text: 'Dropcap', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'dropcap', { title: 'Dropcap' } ); } },
-                	{text: 'Quote', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'quote', { title: 'Quote' } ); } },
+                	{text: 'Quote', onclick: function() { editor.execCommand( 'woo_open_dialog', false, 'quote', { title: 'Quote' } ); } },
                 	{text: 'Highlight', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'highlight', { title: 'Highlight' } ); } },
                 	{text: 'Abbreviation', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'abbr', { title: 'Abbreviation' } ); } },
                 	{text: 'Custom Typography', onclick: function() { editor.execCommand( 'woo_open_dialog', false, 'typography', { title: 'Custom Typography' } ); } }

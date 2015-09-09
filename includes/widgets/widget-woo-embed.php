@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_EmbedWidget extends WP_Widget {
 	var $settings = array( 'title', 'cat_id', 'width', 'height', 'limit', 'tag' );
 
-	function Woo_EmbedWidget() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Display the Embed code from posts in tab like fashion.' );
-		parent::WP_Widget( false, __( 'Woo - Embed/Video', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Woo - Embed/Video', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -17,10 +17,11 @@ class Woo_EmbedWidget extends WP_Widget {
 		$instance = $this->woo_enforce_defaults( $instance );
 		extract( $instance, EXTR_SKIP );
 
-		if ( !empty( $tag ) )
+		if ( !empty( $tag ) ) {
 			$myposts = get_posts( "numberposts=$limit&tag=$tag" );
-		else
+		} else {
 			$myposts = get_posts( "numberposts=$limit&cat=$cat_id" );
+		}
 
 		$post_list = '';
 		$count = 0;

@@ -1,5 +1,32 @@
 *** WooThemes Framework Changelog ***
 
+2015.05.07 - version 6.2.0
+ * Fix - Ensurs woo_get_video_image() supports HTTPS.
+ * Fix - Ensurs the "Custom CSS" setting correctly interprets \ and > in CSS.
+ * Fix - Ensure the "Custom CSS" setting correctly prepares the CSS before output.
+ * Fix - Ensure select fields using chosen.js display correctly when is_rtl().
+ * Fix - Ensure the stored value of a date field in a timestamp setting is a valid timestamp prior to rendering the field.
+ * Fix - Ensure all upload fields correctly cater for HTTPS if is_ssl().
+ * Fix - Ensure the "Adsense" setting correctly supports scripts.
+ * Fix - Ensure the current user can install_themes prior to showing the "Update Framework" button and menu item.
+ * Fix - Ensure the "quote" shortcode generator correctly displays a settings screen.
+ * Tweak - Adjust the "Backup Settings" button text to read "Backup / Import Settings".
+ * Tweak - Style the "Framework" screen to add spacing above the theme name and below the navigation tabs.
+ * Tweak - Make the "quote" shortcode styling responsive on smaller screen devices.
+ * Tweak - Remove the deprecated woo_short_url() function.
+ * New - Add an add_field() method to the WF_Fields class.
+
+2015.04.21 - version 6.1.4
+ * Fix - Potential XSS vulnerability.
+   admin-functions.php
+   classes/class-wf-settings.php
+
+2015.04.21 - version 6.1.3
+ * Fix - Potential XSS vulnerability.
+   admin-functions.php
+   classes/class-wf-fields-settings.php
+   classes/class-wf-settings.php
+
 2015.02.06 - version 6.1.2
  * Fix - Typography settings saving fixed.
    classes/class-wf-settings.php

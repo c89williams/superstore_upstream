@@ -1677,7 +1677,6 @@ table.cart {
 // Product Bundles
 .single-product .summary {
 	.bundled_product_summary {
-		width:100%;
 		margin:0 0 1.618em;
 		.product_title {
 			float: none;
@@ -1689,6 +1688,12 @@ table.cart {
 			width:30%;
 		}
 	}
+    .bundle_form {
+        clear: both;
+        .bundled_product_summary {
+            width: auto;
+        }
+    }
 }
 
 @media only screen and (min-width: 480px) {

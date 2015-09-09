@@ -2627,7 +2627,6 @@ table.cart .actions .checkout-button:hover {
   display: none;
 }
 .single-product .summary .bundled_product_summary {
-  width: 100%;
   margin: 0 0 1.618em;
 }
 .single-product .summary .bundled_product_summary .product_title {
@@ -2638,6 +2637,12 @@ table.cart .actions .checkout-button:hover {
   margin-left: 0;
   margin-bottom: 0;
   width: 30%;
+}
+.single-product .summary .bundle_form {
+  clear: both;
+}
+.single-product .summary .bundle_form .bundled_product_summary {
+  width: auto;
 }
 @media only screen and (min-width: 480px) {
   ul.products li.product {

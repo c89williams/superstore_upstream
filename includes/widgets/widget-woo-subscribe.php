@@ -6,19 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_Subscribe extends WP_Widget {
 	var $settings = array( 'title', 'form', 'social', 'single', 'page' );
 
-	function Woo_Subscribe() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Add a subscribe/connect widget.' );
-		parent::WP_Widget( false, __( 'Woo - Subscribe / Connect', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Woo - Subscribe / Connect', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
 		$instance = $this->woo_enforce_defaults( $instance );
 		extract( $args, EXTR_SKIP );
 		extract( $instance, EXTR_SKIP );
-		if ( !is_singular() || ($single != 'on' && is_single()) || ($page != 'on' && is_page()) ) {
+		if ( ! is_singular() || ( $single != 'on' && is_single() ) || ( $page != 'on' && is_page() ) ) {
 		?>
 			<?php echo $before_widget; ?>
-			<?php woo_subscribe_connect('true', $title, $form, $social); ?>
+			<?php woo_subscribe_connect( 'true', $title, $form, $social ); ?>
 			<?php echo $after_widget; ?>
 		<?php
 		}
@@ -32,12 +32,14 @@ class Woo_Subscribe extends WP_Widget {
 	function woo_enforce_defaults( $instance ) {
 		$defaults = $this->woo_get_settings();
 		$instance = wp_parse_args( $instance, $defaults );
-		$instance['title'] = strip_tags( $instance['title'] );
-		if ( '' == $instance['title'] )
+		$instance['title'] = sanitize_text_field( $instance['title'] );
+		if ( '' == $instance['title'] ) {
 			$instance['title'] = __('Subscribe', 'woothemes');
+		}
 		foreach ( array( 'form', 'social', 'single', 'page' ) as $checkbox ) {
-			if ( 'on' != $instance[$checkbox] )
-					$instance[$checkbox] = '';
+			if ( 'on' != $instance[$checkbox] ) {
+				$instance[$checkbox] = '';
+			}
 		}
 		return $instance;
 	}
