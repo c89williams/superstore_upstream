@@ -1,5 +1,14 @@
 *** Superstore Changelog ***
 
+2015.11.20 - version 1.2.7
+ * Fix - Fixes invalid CSS.
+   style.css,
+   includes/integrations/woocommerce/css/woocommerce.css,
+   includes/integrations/sensei/css/sensei.css
+
+ * Fix - Additional styling for new elements in Sensei 1.9
+   includes/integrations/sensei/css/sensei.css
+
 2015.08.27 - version 1.2.6
  * Fix - Fix layout issue for product bundles.
    includes/integrations/woocommerce/css/woocommerce.css

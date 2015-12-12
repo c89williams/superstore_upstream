@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.2.6
+Version: 1.2.7
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1979,7 +1979,7 @@ ul.nav li a {
 }
 #connect .social a {
   opacity: 0.8;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=80);
   -webkit-transition: all ease-in-out 0.2s;
   -moz-transition: all ease-in-out 0.2s;
   -ms-transition: all ease-in-out 0.2s;
@@ -1989,7 +1989,7 @@ ul.nav li a {
 }
 #connect .social a:hover {
   opacity: 1;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=100);
 }
 #connect .related-posts {
   border: 0;
@@ -2160,7 +2160,7 @@ ul.nav li a {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   opacity: 0.2;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=20);
   text-indent: -99em;
 }
 #searchform .search-submit:hover,
@@ -2170,7 +2170,7 @@ ul.nav li a {
 #searchform input[type=submit]:hover,
 .woocommerce-product-search input[type=submit]:hover {
   opacity: 1;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=100);
   background-color: transparent;
   -webkit-animation: none;
 }
@@ -3147,7 +3147,7 @@ li.comment #respond {
   *margin-left: 1.79976852%;
   *margin-right: 1.79976852%;
   opacity: 0.5;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=50);
 }
 .pinglist li .author {
   font-weight: bold;
@@ -3158,7 +3158,7 @@ li.comment #respond {
 }
 .pinglist li:hover {
   opacity: 1;
-  filter: alpha(opacity=@opacity * 100);
+  filter: alpha(opacity=100);
 }
 /*-------------------------------------------------------------------------------------------*/
 /* 6. PAGE TEMPLATES */
