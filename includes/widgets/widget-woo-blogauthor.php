@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_BlogAuthorInfo extends WP_Widget {
 	var $settings = array( 'title', 'bio', 'custom_email', 'avatar_size', 'avatar_align', 'read_more_text', 'read_more_url', 'page' );
 
-	function Woo_BlogAuthorInfo() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'This is a WooThemes Blog Author Info widget.' );
-		parent::WP_Widget( false, __( 'Woo - Blog Author Info', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Woo - Blog Author Info', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -36,12 +36,17 @@ class Woo_BlogAuthorInfo extends WP_Widget {
 	}
 
 	function update($new_instance, $old_instance) {
-		foreach ( array( 'read_more_text', 'read_more_url' ) as $setting )
+		foreach ( array( 'read_more_text', 'read_more_url' ) as $setting ) {
 			$new_instance[$setting] = strip_tags( $new_instance[$setting] );
+		}
 		$new_instance['bio'] = wp_kses_post( $new_instance['bio'] );
 		$new_instance['avatar_size'] = absint( $new_instance['avatar_size'] );
-		if ( $new_instance['avatar_size'] < 1 )
+		if ( $new_instance['avatar_size'] < 1 ) {
 			$new_instance['avatar_size'] = '';
+		}
+
+		$avatar_size = ! empty( $new_instance['avatar_size'] ) ? $new_instance['avatar_size'] : 48;
+
 		return $new_instance;
 	}
 
@@ -82,7 +87,7 @@ class Woo_BlogAuthorInfo extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('avatar_align'); ?>"><?php _e('Gravatar Alignment:','woothemes'); ?></label>
 			<select name="<?php echo $this->get_field_name('avatar_align'); ?>" class="widefat" id="<?php echo $this->get_field_id('avatar_align'); ?>">
 				<option value="left" <?php if($avatar_align == "left"){ echo "selected='selected'";} ?>><?php _e('Left', 'woothemes'); ?></option>
-				<option value="right" <?php if($avatar_align == "right"){ echo "selected='selected'";} ?>><?php _e('Right', 'woothemes'); ?></option>            
+				<option value="right" <?php if($avatar_align == "right"){ echo "selected='selected'";} ?>><?php _e('Right', 'woothemes'); ?></option>
 			</select>
 		</p>
 		<p>
@@ -103,6 +108,6 @@ class Woo_BlogAuthorInfo extends WP_Widget {
 		</p>
 		<?php
 	}
-} 
+}
 
 register_widget( 'Woo_BlogAuthorInfo' );

@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_AdWidget extends WP_Widget {
 	var $settings = array( 'title', 'adcode', 'image', 'href', 'alt' );
 
-	function Woo_AdWidget() {
-		$widget_ops = array('description' => 'Use this widget to add any type of Ad as a widget.' );
-		parent::WP_Widget(false, __('Woo - Adspace Widget', 'woothemes'),$widget_ops);      
+	function __construct() {
+		$widget_ops = array( 'description' => 'Use this widget to add any type of Ad as a widget.' );
+		parent::__construct( false, __('Woo - Adspace Widget', 'woothemes'), $widget_ops );
 	}
 
 	function widget($args, $instance) {
@@ -31,11 +31,13 @@ class Woo_AdWidget extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		foreach ( array( 'title', 'alt', 'image', 'href' ) as $setting )
+		foreach ( array( 'title', 'alt', 'image', 'href' ) as $setting ) {
 			$new_instance[$setting] = strip_tags( $new_instance[$setting] );
+		}
 		// Users without unfiltered_html cannot update this arbitrary HTML field
-		if ( !current_user_can( 'unfiltered_html' ) )
+		if ( ! current_user_can( 'unfiltered_html' ) ) {
 			$new_instance['adcode'] = $old_instance['adcode'];
+		}
 		return $new_instance;
 	}
 
@@ -79,6 +81,6 @@ class Woo_AdWidget extends WP_Widget {
 	</p>
 <?php
 	}
-} 
+}
 
 register_widget( 'Woo_AdWidget' );

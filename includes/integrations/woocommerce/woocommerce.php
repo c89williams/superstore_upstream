@@ -48,7 +48,7 @@ if ( ! function_exists( 'superstore_product_rating_overview' ) ) {
                 echo '<a href="' . get_permalink() . '#reviews">';
                     echo $product->get_rating_html();
                     echo '<span class="review-count">';
-                        printf( _n( '%s review', '%s reviews', $review_total, 'woocommerce' ), '<span itemprop="ratingCount" class="count">' . $review_total . '</span>' );
+                        printf( _n( '%s review', '%s reviews', $review_total, 'woothemes' ), '<span itemprop="ratingCount" class="count">' . $review_total . '</span>' );
                     echo '</span>';
                 echo '</a>';
             echo '</div>';
@@ -212,16 +212,24 @@ add_filter( 'woocommerce_output_related_products_args', 'superstore_related_prod
 function superstore_related_products() {
 	global $woo_options, $post;
 	$single_layout = get_post_meta( $post->ID, '_layout', true );
-	$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
-	if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
+
+	if ( isset( $woo_options['woocommerce_related_products_maximum'] ) && '' != $woo_options['woocommerce_related_products_maximum'] ) {
+		$products_max = $woo_options['woocommerce_related_products_maximum'] + 2;
+	} else {
+		$products_max = 5;
+	}
+
+	if ( isset( $woo_options[ 'woocommerce_products_fullwidth' ] ) && $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 		$products_cols = 4;
 	} else {
 		$products_cols = 3;
 	}
+
 	$args = array(
 		'posts_per_page' => $products_max,
 		'columns'        => $products_cols,
 	);
+
 	return $args;
 }
 
@@ -235,7 +243,7 @@ if ( ! function_exists( 'woo_upsell_display' ) ) {
 		global $woo_options, $post;
 		$single_layout = get_post_meta( $post->ID, '_layout', true );
 
-		if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
+		if ( isset( $woo_options[ 'woocommerce_products_fullwidth' ] ) && $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 			$products_cols = 4;
 		} else {
 			$products_cols = 3;
@@ -543,7 +551,7 @@ if ( ! function_exists( 'woocommerce_get_sidebar' ) ) {
 		// Display the sidebar on product details page if the full width option is not enabled.
 		$single_layout = get_post_meta( $post->ID, '_layout', true );
 		if ( is_product() ) {
-			if ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'false' || ( $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && $single_layout != "" && $single_layout != "layout-full" && $single_layout != "layout-default" ) ) {
+			if ( ( isset( $woo_options[ 'woocommerce_products_fullwidth' ] ) && $woo_options[ 'woocommerce_products_fullwidth' ] == 'false' ) || ( isset( $woo_options[ 'woocommerce_products_fullwidth' ] ) && $woo_options[ 'woocommerce_products_fullwidth' ] == 'true' && $single_layout != "" && $single_layout != "layout-full" && $single_layout != "layout-default" ) ) {
 				get_sidebar('shop');
 			}
 		}
@@ -604,7 +612,7 @@ if ( ! function_exists( 'wooframework_layout_body_class' ) ) {
 		if ( isset( $woo_options['woocommerce_archives_fullwidth'] ) && 'true' == $woo_options['woocommerce_archives_fullwidth'] && ( is_shop() || is_post_type_archive( 'product' ) || is_tax( get_object_taxonomies( 'product' ) ) ) ) {
 			$layout = 'layout-full';
 		}
-		if ( ( $woo_options[ 'woocommerce_products_fullwidth' ] == "true" && is_product() ) && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
+		if ( ( isset( $woo_options[ 'woocommerce_products_fullwidth' ] ) && $woo_options[ 'woocommerce_products_fullwidth' ] == "true" && is_product() ) && ( $single_layout != 'layout-left-content' && $single_layout != 'layout-right-content' ) ) {
 			$layout = 'layout-full';
 		}
 

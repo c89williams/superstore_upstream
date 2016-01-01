@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_Product_Categories extends WP_Widget {
 	var $settings = array( 'categories_per_page' );
 
-	function Woo_Product_Categories() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Display product categories (use in the homepage widget region)' );
-		parent::WP_Widget( false, __( 'Superstore - Product Categories Loop', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Superstore - Product Categories Loop', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -33,9 +33,9 @@ class Woo_Product_Categories extends WP_Widget {
 	function woo_enforce_defaults( $instance ) {
 		$defaults = $this->woo_get_settings();
 		$instance = wp_parse_args( $instance, $defaults );
-		$instance['categories_per_page'] = strip_tags( $instance['categories_per_page'] );
+		$instance['categories_per_page'] = absint( $instance['categories_per_page'] );
 		if ( '' == $instance['categories_per_page'] ) {
-			$instance['categories_per_page'] = __( '4', 'woothemes' );
+			$instance['categories_per_page'] = 4;
 		}
 		return $instance;
 	}

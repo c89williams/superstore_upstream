@@ -18,17 +18,10 @@
     $woo_framework_url = get_template_directory_uri() . '/functions/';
 
     // Check if this is a Windows server or not.
-    $_is_windows = false;
     $delimiter = '/';
-    $dirname = dirname( __FILE__ );
-    $_has_forwardslash = strpos( $dirname, $delimiter );
+    $dirname = wp_normalize_path( dirname( __FILE__ ) );
 
-    if ( $_has_forwardslash === false ) {
-        $_is_windows = true;
-        $delimiter = '\\';
-    }
-
-    $woo_framework_functions_path = str_replace( 'js' . $delimiter . 'shortcode-generator' . $delimiter . 'js', '', dirname( __FILE__ ) );
+    $woo_framework_functions_path = str_replace( 'js' . $delimiter . 'shortcode-generator' . $delimiter . 'js', '', $dirname );
 
     // Require admin functions.
     require_once( $woo_framework_functions_path . $delimiter . 'admin-functions.php' );
@@ -74,10 +67,6 @@
 
     $fonts = join( '|', $fonts_whitelist );
 ?>
-
-var framework_url = '<?php echo dirname( __FILE__ ); ?>';
-
-var shortcode_generator_path = '<?php echo esc_url( $woo_framework_path ); ?>';
 var shortcode_generator_url = '<?php echo esc_url( $woo_framework_url ); ?>' + 'js/shortcode-generator/';
 
 var wooDialogHelper = {
@@ -130,7 +119,7 @@ var wooDialogHelper = {
     },
 
     loadShortcodeDetails: function () {
-        if ( this.wooSelectedShortcodeType ) {
+        if ( typeof wooSelectedShortcodeType !== 'undefined' ) {
 
             var a = this;
             jQuery.getScript(shortcode_generator_url + "shortcodes/" + this.wooSelectedShortcodeType + ".js", function () {

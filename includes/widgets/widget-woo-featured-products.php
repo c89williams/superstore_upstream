@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_Featured_Products extends WP_Widget {
 	var $settings = array( 'products_per_page' );
 
-	function Woo_Featured_Products() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Display featured products (use in the homepage widget region)' );
-		parent::WP_Widget( false, __( 'Superstore - Featured Products Loop', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Superstore - Featured Products Loop', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -46,13 +46,7 @@ class Woo_Featured_Products extends WP_Widget {
 
 					$loop = new WP_Query( $args );
 
-					if ( function_exists( 'get_product' ) ) {
-						$product = get_product( $loop->post->ID );
-					} else {
-						$product = new WC_Product( $loop->post->ID );
-					}
-
-					while ( $loop->have_posts() ) : $loop->the_post(); $product; ?>
+					while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
 						<li class="product featured <?php if ( $i % 2 == 0 ) { echo 'last'; } else { echo 'first'; } ?>">
 
@@ -97,9 +91,9 @@ class Woo_Featured_Products extends WP_Widget {
 	function woo_enforce_defaults( $instance ) {
 		$defaults = $this->woo_get_settings();
 		$instance = wp_parse_args( $instance, $defaults );
-		$instance['products_per_page'] = strip_tags( $instance['products_per_page'] );
+		$instance['products_per_page'] = absint( $instance['products_per_page'] );
 		if ( '' == $instance['products_per_page'] ) {
-			$instance['products_per_page'] = __( '4', 'woothemes' );
+			$instance['products_per_page'] = 4;
 		}
 		return $instance;
 	}

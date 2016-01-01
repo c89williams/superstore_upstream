@@ -1484,4 +1484,108 @@ if ( ! function_exists( 'woothemes_machine' ) ) {
     } // End timthumb_deprecated()
 
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Woo URL shortener */
+/*-----------------------------------------------------------------------------------*/
+
+function woo_short_url($url) {
+    _deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
+
+    $service = get_option( 'woo_url_shorten' );
+    $bitlyapilogin = get_option( 'woo_bitly_api_login' );;
+    $bitlyapikey = get_option( 'woo_bitly_api_key' );;
+    if (isset($service)) {
+        switch ($service)
+        {
+            case 'TinyURL':
+                $shorturl = getTinyUrl($url);
+                break;
+            case 'Bit.ly':
+                if (isset($bitlyapilogin) && isset($bitlyapikey) && ($bitlyapilogin != '') && ($bitlyapikey != '')) {
+                    $shorturl = make_bitly_url($url,$bitlyapilogin,$bitlyapikey,'json' );
+                }
+                else {
+                    $shorturl = getTinyUrl($url);
+                }
+                break;
+            case 'Off':
+                $shorturl = $url;
+                break;
+            default:
+                $shorturl = $url;
+                break;
+        }
+    }
+    else {
+        $shorturl = $url;
+    }
+    return $shorturl;
+}
+
+//TinyURL
+function getTinyUrl($url) {
+    _deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
+
+    $tinyurl = file_get_contents_curl( "http://tinyurl.com/api-create.php?url=".$url);
+    return $tinyurl;
+}
+
+//Bit.ly
+function make_bitly_url($url,$login,$appkey,$format = 'xml',$version = '2.0.1') {
+    _deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
+    //create the URL
+    $bitly = 'http://api.bit.ly/shorten?version='.$version.'&longUrl='.urlencode($url).'&login='.$login.'&apiKey='.$appkey.'&format='.$format;
+
+    //get the url
+    //could also use cURL here
+    $response = file_get_contents_curl($bitly);
+
+    //parse depending on desired format
+    if(strtolower($format) == 'json')
+    {
+        $json = @json_decode($response,true);
+        return $json['results'][$url]['shortUrl'];
+    }
+    else //xml
+    {
+        $xml = simplexml_load_string($response);
+        return 'http://bit.ly/'.$xml->results->nodeKeyVal->hash;
+    }
+}
+
+//Alternative CURL function
+function file_get_contents_curl($url) {
+    if ( $url == '' || $url == null ) { return ''; }
+    $data = '';
+
+    $response = wp_remote_get( $url );
+
+    if ( is_wp_error( $response ) ) {
+        $data  = $url;
+    } else {
+        $data = $response['body'];
+    }
+
+    return $data;
+} // End file_get_contents_curl()
+
+// Checks for presence of the cURL extension.
+function _iscurlinstalled() {
+    if  (in_array  ( 'curl', get_loaded_extensions())) {
+        if (function_exists( 'curl_init')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    else{
+        if (function_exists( 'curl_init')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
 ?>

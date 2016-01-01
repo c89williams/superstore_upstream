@@ -7,9 +7,9 @@ class Woo_Recent_Products extends WP_Widget {
 	var $settings = array( 'title', 'products_per_page' );
 
 
-	function Woo_Recent_Products() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Display recent products (use in the homepage widget region)' );
-		parent::WP_Widget( false, __( 'Superstore - Recent Products Loop', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Superstore - Recent Products Loop', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -39,10 +39,7 @@ class Woo_Recent_Products extends WP_Widget {
 	function woo_enforce_defaults( $instance ) {
 		$defaults = $this->woo_get_settings();
 		$instance = wp_parse_args( $instance, $defaults );
-		$instance['products_per_page'] = strip_tags( $instance['products_per_page'] );
-		if ( '' == $instance['products_per_page'] ) {
-			$instance['products_per_page'] = __( '4', 'woothemes' );
-		}
+		$instance['products_per_page'] = ! empty( $instance['products_per_page'] ) ? absint( $instance['products_per_page'] ) : 4;
 		return $instance;
 	}
 

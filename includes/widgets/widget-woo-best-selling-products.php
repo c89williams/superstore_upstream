@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Woo_Best_Selling_Products extends WP_Widget {
 	var $settings = array( 'products_per_page' );
 
-	function Woo_Best_Selling_Products() {
+	function __construct() {
 		$widget_ops = array( 'description' => 'Display best selling products (use in the homepage widget region)' );
-		parent::WP_Widget( false, __( 'Superstore - Best Selling Products Loop', 'woothemes' ), $widget_ops );
+		parent::__construct( false, __( 'Superstore - Best Selling Products Loop', 'woothemes' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -33,9 +33,9 @@ class Woo_Best_Selling_Products extends WP_Widget {
 	function woo_enforce_defaults( $instance ) {
 		$defaults = $this->woo_get_settings();
 		$instance = wp_parse_args( $instance, $defaults );
-		$instance['products_per_page'] = strip_tags( $instance['products_per_page'] );
+		$instance['products_per_page'] = sanitize_text_field( $instance['products_per_page'] );
 		if ( '' == $instance['products_per_page'] ) {
-			$instance['products_per_page'] = __( '4', 'woothemes' );
+			$instance['products_per_page'] = 4;
 		}
 		return $instance;
 	}

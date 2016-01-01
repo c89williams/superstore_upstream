@@ -1,5 +1,39 @@
 *** Superstore Changelog ***
 
+2015.12.16 - version 1.2.8
+ * Fix - Fixes the styling of the reviews.
+   style.css
+
+2015.11.20 - version 1.2.7
+ * Fix - Fixes invalid CSS.
+   style.css,
+   includes/integrations/woocommerce/css/woocommerce.css,
+   includes/integrations/sensei/css/sensei.css
+
+ * Fix - Additional styling for new elements in Sensei 1.9
+   includes/integrations/sensei/css/sensei.css
+
+2015.08.27 - version 1.2.6
+ * Fix - Fix layout issue for product bundles.
+   includes/integrations/woocommerce/css/woocommerce.css
+
+ * Fix - Fixes a couple PHP notices related to undefinied variables.
+  includes/integrations/woocommerce/woocommerce.php,
+  includes/theme-js.php
+
+2015.08.06 - version 1.2.5
+ * Fix - WC 2.4 compatibility fix.
+   includes/woocommerce/content-product_cat.php
+
+2015.08.03 - version 1.2.4
+ * Fix - updates WooCommerce templates to support 2.4.0
+   includes/woocommerce/content-product_cat.php,
+   includes/woocommerce/single-product/tabs/description.php
+
+2015.07.24 - version 1.2.3
+ * Fix - updates translation name to allow for translation.
+   includes/integrations/woocommerce/woocommerce.php
+
 2015.06.04 - version 1.2.2
  * includes/js/jquery.prettyPhoto.js - Updated prettyPhoto to version 3.1.6.
 

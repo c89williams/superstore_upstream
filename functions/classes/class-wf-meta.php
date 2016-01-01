@@ -137,6 +137,10 @@ class WF_Meta {
 	public function meta_box_save ( $post_id ) {
 		global $post, $messages;
 
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return;
+		}
+
 		$screen = get_current_screen();
 
 		if ( 'nav-menus' != $screen->base ) {
@@ -146,7 +150,7 @@ class WF_Meta {
 			}
 
 			// Verify
-			if ( ! wp_verify_nonce( $_POST[$this->_field_obj->__get( 'token' ) . '_nonce'], $this->_field_obj->__get( 'token' ) . '_nonce' ) ) {
+			if ( ! isset( $_POST[$this->_field_obj->__get( 'token' ) . '_nonce'] ) || ! wp_verify_nonce( $_POST[$this->_field_obj->__get( 'token' ) . '_nonce'], $this->_field_obj->__get( 'token' ) . '_nonce' ) ) {
 				return $post_id;
 			}
 
@@ -339,4 +343,3 @@ class WF_Meta {
 		return $field_data;
 	} // End setup_fields()
 } // End Class
-?>

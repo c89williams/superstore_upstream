@@ -214,6 +214,17 @@ function woo_image($args) {
     	$custom_field = esc_url( get_post_meta( $id, $key, true ) );
 	}
 
+	// Theme Override
+	if ( apply_filters( 'woo_image_override', false ) ) {
+		// Use predefined size string
+		if ( $size )
+			$thumb_size = $size;
+		else
+			$thumb_size = array( $width, $height );
+
+		$img_link = get_the_post_thumbnail( $id, $thumb_size, array( 'class' => 'woo-image ' . esc_attr( $class ) ) );
+	}
+
 	// Automatic Image Thumbs - get first image from post attachment
 	if ( empty( $custom_field ) && get_option( 'woo_auto_img' ) == 'true' && empty( $img_link ) && ! ( is_singular() && in_the_loop() && $link == 'src' ) ) {
 
@@ -470,6 +481,10 @@ function woo_get_video_image( $embed ) {
 	// YouTube - get the corresponding thumbnail images
 	if( isset( $match[1] ) )
 		$video_thumb = "http://img.youtube.com/vi/" . urlencode( $match[1] ) . "/0.jpg";
+
+	if ( is_ssl() ) {
+		$video_thumb = str_replace( 'http://', 'https://', $video_thumb );
+	}
 
 	// return whichever thumbnail image you would like to retrieve
 	return $video_thumb;
@@ -807,7 +822,7 @@ function woo_show_pagemenu( $exclude = '' ) {
 function woo_style_path() {
 	$return = '';
 
-	$style = $_REQUEST['style'];
+	$style = isset( $_REQUEST['style'] ) ? $_REQUEST['style'] : '';
 
 	// Sanitize request input.
 	$style = esc_attr( strtolower( trim( strip_tags( $style ) ) ) );
@@ -1264,108 +1279,6 @@ function woo_framework_version_checker( $local_version, $check_if_critical = fal
 	return $data;
 } // End woo_framework_version_checker()
 
-/*-----------------------------------------------------------------------------------*/
-/* Woo URL shortener */
-/*-----------------------------------------------------------------------------------*/
-
-function woo_short_url($url) {
-	_deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
-
-	$service = get_option( 'woo_url_shorten' );
-	$bitlyapilogin = get_option( 'woo_bitly_api_login' );;
-	$bitlyapikey = get_option( 'woo_bitly_api_key' );;
-	if (isset($service)) {
-		switch ($service)
-		{
-    		case 'TinyURL':
-    			$shorturl = getTinyUrl($url);
-    			break;
-    		case 'Bit.ly':
-    			if (isset($bitlyapilogin) && isset($bitlyapikey) && ($bitlyapilogin != '') && ($bitlyapikey != '')) {
-    				$shorturl = make_bitly_url($url,$bitlyapilogin,$bitlyapikey,'json' );
-    			}
-    			else {
-    				$shorturl = getTinyUrl($url);
-    			}
-    			break;
-    		case 'Off':
-    			$shorturl = $url;
-    			break;
-    		default:
-    			$shorturl = $url;
-    			break;
-    	}
-	}
-	else {
-		$shorturl = $url;
-	}
-	return $shorturl;
-}
-
-//TinyURL
-function getTinyUrl($url) {
-	_deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
-
-	$tinyurl = file_get_contents_curl( "http://tinyurl.com/api-create.php?url=".$url);
-	return $tinyurl;
-}
-
-//Bit.ly
-function make_bitly_url($url,$login,$appkey,$format = 'xml',$version = '2.0.1') {
-	_deprecated_function( __FUNCTION__, '6.0.0', __( 'Shortlinks feature in WooDojo.', 'woothemes' ) );
-	//create the URL
-	$bitly = 'http://api.bit.ly/shorten?version='.$version.'&longUrl='.urlencode($url).'&login='.$login.'&apiKey='.$appkey.'&format='.$format;
-
-	//get the url
-	//could also use cURL here
-	$response = file_get_contents_curl($bitly);
-
-	//parse depending on desired format
-	if(strtolower($format) == 'json')
-	{
-		$json = @json_decode($response,true);
-		return $json['results'][$url]['shortUrl'];
-	}
-	else //xml
-	{
-		$xml = simplexml_load_string($response);
-		return 'http://bit.ly/'.$xml->results->nodeKeyVal->hash;
-	}
-}
-
-//Alternative CURL function
-function file_get_contents_curl($url) {
-	if ( $url == '' || $url == null ) { return ''; }
-	$data = '';
-
-	$response = wp_remote_get( $url );
-
-	if ( is_wp_error( $response ) ) {
-		$data  = $url;
-	} else {
-		$data = $response['body'];
-	}
-
-	return $data;
-} // End file_get_contents_curl()
-
-// Checks for presence of the cURL extension.
-function _iscurlinstalled() {
-	if  (in_array  ( 'curl', get_loaded_extensions())) {
-		if (function_exists( 'curl_init')) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	else{
-		if (function_exists( 'curl_init')) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
 
 /*-----------------------------------------------------------------------------------*/
 /* woo_title() */
@@ -2262,7 +2175,7 @@ if ( ! function_exists( 'woo_google_webfonts' ) ) {
 					$fonts_and_variants[] = $k . $v;
 				}
 				$fonts_and_variants = array_map( 'urlencode', $fonts_and_variants );
-				$fonts = join( '|', $fonts_and_variants );
+				$fonts = join( '%7C', $fonts_and_variants );
 
 				$output .= "\n<!-- Google Webfonts -->\n";
 				$output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $fonts .'" rel="stylesheet" type="text/css" />'."\n";
@@ -2421,7 +2334,7 @@ if ( ! function_exists( 'woo_pagination' ) ) {
 
 		/* Set up some default arguments for the paginate_links() function. */
 		$defaults = array(
-			'base' => add_query_arg( 'paged', '%#%' ),
+			'base' => esc_url_raw( add_query_arg( 'paged', '%#%' ) ),
 			'format' => '',
 			'total' => $max_num_pages,
 			'current' => $current,
@@ -2458,13 +2371,13 @@ if ( ! function_exists( 'woo_pagination' ) ) {
 				$paged = get_query_var( 'paged' );
 				$base = add_query_arg( 's', urlencode( $search_query ) );
 				$base = add_query_arg( 'paged', '%#%' );
-				$defaults['base'] = $base;
+				$defaults['base'] = esc_url_raw( $base );
 			} else {
 				$search_permastruct = $wp_rewrite->get_search_permastruct();
 				if ( ! empty( $search_permastruct ) ) {
 					$base = get_search_link();
 					$base = add_query_arg( 'paged', '%#%', $base );
-					$defaults['base'] = $base;
+					$defaults['base'] = esc_url_raw( $base );
 				}
 			}
 		}
@@ -2631,7 +2544,7 @@ function woo_breadcrumbs( $args = array() ) {
 		}
 
 		/* Display terms for specific post type taxonomy if requested. */
-		if ( isset( $args["singular_{$post_type}_taxonomy"] ) ) {
+		if ( isset( $args["singular_{$post_type}_taxonomy"] ) && $post_type != 'page' ) {
 			$raw_terms = get_the_terms( $post_id, $args["singular_{$post_type}_taxonomy"] );
 
 			if ( is_array( $raw_terms ) && 0 < count( $raw_terms ) && ! is_wp_error( $raw_terms ) ) {
@@ -2867,14 +2780,19 @@ function wf_set_default_breadcrumb_taxonomies ( $args ) {
 	$post_types = get_post_types( array( 'public' => true ) );
 	if ( 0 < count( $post_types ) ) {
 		foreach ( $post_types as $k => $v ) {
-			$taxonomies = get_taxonomies( array( 'object_type' => array( $k ), 'public' => true ) );
-			$post_types[$k] = '';
-			// Choose the first taxonomy, if one is present.
-			if ( 0 < count( $taxonomies ) ) {
-				foreach ( $taxonomies as $i => $j ) {
-					if ( '' != $post_types[$k] ) continue;
-					$post_types[$k] = $j;
+			$all_taxonomies = get_object_taxonomies( $k, 'objects' );
+			$taxonomies     = array();
+
+			// Get public taxonomies
+			foreach ( $all_taxonomies as $taxonomy ) {
+				if ( $taxonomy->public ) {
+					$taxonomies[] = $taxonomy->name;
 				}
+			}
+
+			// Choose the first taxonomy, if one is present.
+			if ( $taxonomies ) {
+				$post_types[$k] = current( $taxonomies );
 			}
 
 			if ( '' != $post_types[$k] && ! isset( $args['singular_' . $k . '_taxonomy'] ) && is_singular() && ( $k == get_post_type() ) ) {
@@ -3407,7 +3325,7 @@ function wooframework_ajax_banner_close () {
 	$response = set_user_setting( 'wooframeworkhidebanner' . $banner, '1' );
 
 	$sendback = remove_query_arg( array( 'trashed', 'untrashed', 'deleted', 'ids' ), wp_get_referer() );
-	wp_safe_redirect( $sendback );
+	wp_safe_redirect( esc_url_raw( $sendback ) );
 	exit;
 } // End toggle_notifications_status()
 
