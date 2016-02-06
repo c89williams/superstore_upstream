@@ -60,7 +60,7 @@ jQuery(document).ready(function($){
 	if ( ! navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
 
 		// Payment box fixed
-		if (jQuery(window).width() > 768) {
+		if (jQuery(window).width() > 768 && woo_general_params.stickyCheckout > 0) {
 			var bh = $('body').height();
 		   	var pos = $('#payment').position();
 

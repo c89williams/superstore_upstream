@@ -1,7 +1,7 @@
 /*
 Theme Name: Superstore
 Theme URI: http://www.woothemes.com/
-Version: 1.2.7
+Version: 1.2.9
 Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
 Author: WooThemes
 Author URI: http://www.woothemes.com
@@ -1059,12 +1059,7 @@ ul.nav { // Styles applied to all instances of navigation
 	}
 	.social {
 		a {
-			.opacity(0.8);
-			.transition();
 			font-weight: normal;
-			&:hover {
-				.opacity(1);
-			}
 		}
 	}
 	.related-posts {
@@ -1176,13 +1171,7 @@ ul.nav { // Styles applied to all instances of navigation
 		box-shadow: none;
 		-moz-box-shadow: none;
 		-webkit-box-shadow: none;
-		.opacity(0.2);
 		text-indent: -99em;
-		&:hover {
-			.opacity(1);
-			background-color: transparent;
-			-webkit-animation:none;
-		}
 	}
 	&:hover, &:focus, &:active {
 		border-color:@color_links;
@@ -1652,7 +1641,7 @@ ul.nav { // Styles applied to all instances of navigation
 			float: right;
 			font-size:1.618em;
 		}
-		li.review {
+		li.comment {
 			overflow: hidden;
 			zoom: 1;
 
@@ -1752,7 +1741,6 @@ li.comment #respond {
 		margin: 0;
 		list-style-type: decimal;
 		.column(7,9);
-		.opacity(0.5);
 		.author {
 			font-weight: bold;
 		}
@@ -1760,9 +1748,6 @@ li.comment #respond {
 		.pingcontent {
 			display: block;
 			margin:0 0 1.618em;
-		}
-		&:hover {
-			.opacity(1);
 		}
 	}
 }
@@ -2029,6 +2014,7 @@ html[xmlns] .flexslider .slides {display: block;}
 		.border_radius_right;
 		margin-top:-1em;
 		color: #fff;
+		z-index: 2;
 		&:before {
 			font-family: 'FontAwesome';
 			content: "\f053";
@@ -2129,14 +2115,6 @@ input[type=text], input.input-text, textarea, input.txt, input[type=tel], input[
 	&:hover, &:active {
 		border-color:@border_main - #111;
 	}
-}
-
-// Placeholders
-[placeholder]:focus::-webkit-input-placeholder {
-  -webkit-transition: opacity 0.5s 0.5s ease;
-  -moz-transition: opacity 0.5s 0.5s ease;
-  transition: opacity 0.5s 0.5s ease;
-  opacity: 0;
 }
 
 // Checkboxes

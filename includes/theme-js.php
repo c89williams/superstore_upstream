@@ -20,6 +20,11 @@ if ( ! function_exists( 'woothemes_add_javascript' ) ) {
 		wp_enqueue_script( 'tiptip', get_template_directory_uri() . '/includes/js/jquery.tiptip.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'general', get_template_directory_uri() . '/includes/js/general.js', array( 'jquery' ) );
 
+		$params = array(
+				'stickyCheckout'		=> apply_filters( 'woo_sticky_checkout', true )
+			);
+		wp_localize_script( 'general', 'woo_general_params', $params );
+
 		// Load Google Script on Contact Form Page Template
 		if ( is_page_template( 'template-contact.php' ) ) {
 			wp_enqueue_script( 'google-maps' );

@@ -833,11 +833,6 @@ p.stars a.star-4:after {
 p.stars a.star-5:after {
   content: "\f005\f005\f005\f005\f005";
 }
-del,
-del .amount {
-  opacity: 0.75;
-  filter: alpha(opacity=75);
-}
 ins {
   text-decoration: none;
 }
@@ -1490,17 +1485,6 @@ ul.products li.product.sale .img-wrap .price {
 ul.products li.product.sale .img-wrap .price:after {
   border-color: #0894b4 transparent transparent transparent;
 }
-ul.products li.product a:hover h3 {
-  color: #f37324;
-}
-ul.products li.product a:hover .img-wrap {
-  box-shadow: inset 0 0 0 9em rgba(255, 255, 255, 0.8);
-  -webkit-box-shadow: inset 0 0 0 9em rgba(255, 255, 255, 0.8);
-}
-ul.products li.product a:hover .img-wrap img {
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-}
 ul.products li.product .img-wrap {
   position: relative;
   -webkit-border-top-left-radius: 0.382em;
@@ -1692,9 +1676,6 @@ ul.products li.product .rating-wrap + .button {
 ul.products li.product .button {
   margin: 1em 0 1em 1em;
 }
-ul.products li.product .add_to_cart_button {
-  -webkit-transition: opacity ease-in-out 0.2s;
-}
 ul.products li.product .add_to_cart_button:after {
   font-family: "FontAwesome";
   font-weight: normal;
@@ -1710,10 +1691,6 @@ ul.products li.product .add_to_cart_button:after {
 }
 ul.products li.product .add_to_cart_button.product_type_variable:after {
   display: none;
-}
-ul.products li.product .button.loading {
-  opacity: 0.3;
-  filter: alpha(opacity=30);
 }
 ul.products li.product .button.loading:after {
   display: inline-block;
@@ -3863,6 +3840,30 @@ table.cart .actions .checkout-button:hover {
     /* Firefox, other Gecko */
     box-sizing: border-box;
     /* Opera/IE 8+ */
+  }
+  /* Opacity transitions only for desktop devices */
+  del,
+  del .amount {
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+  }
+  ul.products li.product a:hover h3 {
+    color: #f37324;
+  }
+  ul.products li.product a:hover .img-wrap {
+    box-shadow: inset 0 0 0 9em rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: inset 0 0 0 9em rgba(255, 255, 255, 0.8);
+  }
+  ul.products li.product a:hover .img-wrap img {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+  }
+  ul.products li.product .add_to_cart_button {
+    -webkit-transition: opacity ease-in-out 0.2s;
+  }
+  ul.products li.product .button.loading {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
   }
 }
 .ie8 ul.products .details-link,

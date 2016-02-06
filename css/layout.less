@@ -914,6 +914,46 @@ INDEX
 		}
 	}
 
+	/* Opacity transitions only for desktop devices */
+	[placeholder]:focus::-webkit-input-placeholder {
+		-webkit-transition: opacity 0.5s 0.5s ease;
+		-moz-transition: opacity 0.5s 0.5s ease;
+		transition: opacity 0.5s 0.5s ease;
+		opacity: 0;
+	}
+
+	#connect {
+		.social {
+			a {
+				.opacity(0.8);
+				.transition();
+				&:hover {
+					.opacity(1);
+				}
+			}
+		}
+	}
+
+	#searchform,
+	.woocommerce-product-search {
+		.search-submit, #searchsubmit, input[type=submit] {
+			.opacity(0.2);
+			&:hover {
+				.opacity(1);
+				background-color: transparent;
+				-webkit-animation:none;
+			}
+		}
+	}
+
+	.pinglist {
+		li {
+			.opacity(0.5);
+			&:hover {
+				.opacity(1);
+			}
+		}
+	}
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 	#navigation.fixed {
