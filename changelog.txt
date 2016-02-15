@@ -1,5 +1,9 @@
 *** Superstore Changelog ***
 
+2016.02.08 - version 1.2.10
+ * Fix - Fixes the outdated WooCommerce template notice.
+   woocommerce/content-product_cat.php
+
 2016.02.02 - version 1.2.9
  * Fix - Removes opacity transitions from handheld devices to avoid having to double tap to perform certain actions.
    style.css,
